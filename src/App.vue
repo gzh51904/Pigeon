@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+<<<<<<< HEAD
     <div class="header">
       <a class="search-btn">
         <i class="el-icon-search"></i>
@@ -176,10 +177,16 @@
     </div>
     <router-view></router-view>
     <sub-nav></sub-nav>
+=======
+    <router-view>
+       <sub-nav></sub-nav>
+    </router-view>
+>>>>>>> 17538713b74e78fb8a749d0412390de0ecba2477
   </div>
 </template>
 
 <script>
+<<<<<<< HEAD
 import Vue from "vue";
 import "../static/css/reset.css";
 import "../static/css/app.scss";
@@ -192,23 +199,30 @@ Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
 Vue.component(Search.name, Search);
 
+=======
+>>>>>>> 17538713b74e78fb8a749d0412390de0ecba2477
 import "../static/css/reset.css";
-
-import subNav from "./components/Subnav.vue";
-
+import subNav from './components/Subnav.vue';
 export default {
-  name: "app",
-  data: {},
   components: {
     subNav
+<<<<<<< HEAD
   },
   beforeRouteUpdate(to, from, next) {
     console.log(to, from);
     next();
   },
   created() {}
+=======
+  }
+>>>>>>> 17538713b74e78fb8a749d0412390de0ecba2477
 };
 </script>
 
 <style lang="scss" scoped>
+  #app{
+    height:100%;
+  }
 </style>
+
+
