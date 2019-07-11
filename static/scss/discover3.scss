@@ -1,0 +1,40 @@
+.basis{
+    .icon{
+        margin-top: 28px;
+        color:#9DABC1;
+        span{
+            margin-right: 16px;
+            i{
+                margin-right: 8px;
+            }
+        }
+       
+    }
+    span{
+        display: inline-block;
+        border-radius: 2rem;
+        background: #eaedf5;
+        height: 32px;
+        padding: 4px 10px;
+    }
+    .item{
+        border-top: .6px solid #eaedf5;
+        margin:0 30px 18px 30px;
+        h2{
+            font-size: 36px;
+            color:#343434;
+            margin-top: 35px;
+            
+        }
+        p{
+            font-size: 26px;
+            color:#979CAF;
+            margin: 75px 0 20px 0;
+        }
+        img{
+            margin-top: 35px;
+            width: 200px;
+            height: 146px;
+        }
+    }
+}
