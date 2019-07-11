@@ -15,6 +15,7 @@
         <li><div><span>寿险</span></div></li> -->
     </div>
     <router-view></router-view>
+    <slot></slot>
   </div>
 </template>
 <script>
@@ -31,8 +32,8 @@ export default {
       pages: [
         {
           title: "特色",
-          path: "/production/tese",
-          name: "tese"
+          path: "/production/feature",
+          name: "feature"
         },
         {
           title: "健康险",
@@ -41,28 +42,28 @@ export default {
         },
         {
           title: "旅行险",
-          path: "/production/trval",
-          name: "trval"
+          path: "/production/travel",
+          name: "travel"
         },
         {
           title: "意外险",
-          path: "/production/trval",
-          name: "trval"
+          path: "/production/accident",
+          name: "accident"
         },
         {
           title: "财产险",
-          path: "/production/trval",
-          name: "trval"
+          path: "/production/wealth",
+          name: "wealth"
         },
         {
           title: "责任险",
-          path: "/production/trval",
-          name: "trval"
+          path: "/production/duty",
+          name: "duty"
         },
         {
           title: "寿险",
-          path: "/production/trval",
-          name: "trval"
+          path: "/production/lifetime",
+          name: "lifetime"
         }
       ],
       active: true

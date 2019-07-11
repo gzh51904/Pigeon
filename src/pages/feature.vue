@@ -7,7 +7,7 @@
             <div class="free-mark">
               <div class="tit">公益产品</div>
             </div>
-            <img src="../assets/cc-img/main1.png" alt="">
+            <img src="../assets/cc-img/feature1.png" alt="">
             <span class="pbt-sales">销量：<i>25775</i></span>
             <span class="pbt-price">
               ￥
