@@ -5,7 +5,7 @@
         <a href="#" class="head-img">
           <img src="../assets/mine/head-img.png" alt />
         </a>
-        <a href="#" class="login">登陆/注册</a>
+        <a href="#" class="login" @click.prevent.stop="goto('reg')">登陆/注册</a>
       </div>
       <div class="domain">
         <a href="#" v-for="item in domain" :key="item.name">
@@ -42,6 +42,7 @@
         </div>
       </div>
     </div>
+    <slot></slot>
   </div>
 </template>
 <script>
@@ -126,6 +127,11 @@ export default {
         }
       ]
     };
+  },
+  methods: {
+    goto(path) {
+      this.$router.replace(path);
+    }
   },
   computed: {},
   created() {
