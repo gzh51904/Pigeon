@@ -1,0 +1,146 @@
+.mine-container {
+    .mine-content {
+        .login-reg {
+            margin: 4.4vw 4.4vw 0 4.4vw;
+            width: 91.2vw;
+            height: 30.9333vw;
+            background: url(../../src/assets/mine/bg-img.png) 0 0 no-repeat;
+            background-size: 100% 100%;
+            overflow: hidden;
+
+            .head-img {
+                float: left;
+                display: block;
+                width: 15.4667vw;
+                height: 15.4667vw;
+                border-radius: 50%;
+                margin-left: 5.2vw;
+                margin-top: 6.6667vw;
+
+                img {
+                    display: block;
+                    width: 15.4667vw;
+                    height: 15.4667vw;
+                    border-radius: 50%;
+                }
+            }
+
+            .login {
+                display: inline-block;
+                color: white;
+                font-size: 4.8vw;
+                float: left;
+                margin-top: 12.1333vw;
+                margin-left: 4.1333vw;
+            }
+        }
+
+        .domain {
+            display: flex;
+            justify-content: space-around;
+            margin: 3.2vw 0;
+
+            a {
+
+
+                .domain-icon {
+                    display: flex;
+                    flex-direction: column;
+
+                    img {
+                        height: 6.6667vw;
+                        margin-bottom: 2.4vw;
+                    }
+                }
+
+                span {
+                    color: #000;
+                    font-size: 3.3333vw;
+                    line-height: 3.3333vw;
+                }
+            }
+        }
+
+
+        .service {
+            .member-title {
+                padding: 39px;
+                line-height: 34px;
+                font-weight: 700;
+                margin: 13px 0 28px 0;
+
+                h2 {
+                    font-size: 34px;
+                }
+            }
+
+            .member-item {
+                border-top: 1px solid #f4f4f4;
+                display: grid;
+                grid-template-columns: repeat(3, 248px);
+                grid-template-rows: repeat(1, 180px);
+                overflow: hidden;
+
+                a {
+                    border-bottom: 1px solid #f4f4f4;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+
+                    img {
+                        height: 50px;
+                        margin-bottom: 30px;
+                    }
+
+                    span {
+                        color: #000;
+                        font-size: 3.3333vw;
+                        line-height: 3.3333vw;
+                    }
+                }
+
+                a:nth-child(2n) {
+                    border-left: 1px solid #f4f4f4;
+                    border-right: 1px solid #f4f4f4;
+                }
+
+            }
+        }
+
+        .commonly {
+            .member-item {
+                border-top: 1px solid #f4f4f4;
+                border-bottom: 1px solid #f4f4f4;
+                display: grid;
+                grid-template-columns: repeat(3, 248px);
+                grid-template-rows: repeat(3, 180px);
+                overflow: hidden;
+
+                a {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+
+                    img {
+                        height: 50px;
+                        margin-bottom: 30px;
+                    }
+
+                    span {
+                        color: #000;
+                        font-size: 3.3333vw;
+                        line-height: 3.3333vw;
+                    }
+                }
+
+                a:nth-child(2) {
+                    border-left: 1px solid #f4f4f4;
+                    border-right: 1px solid #f4f4f4;
+                }
+
+            }
+        }
+    }
+}
