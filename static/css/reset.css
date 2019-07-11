@@ -1,3 +1,6 @@
+*{
+    box-sizing: border-box;
+}
 /*(1)清除默认样式*/
 html,
 body,
