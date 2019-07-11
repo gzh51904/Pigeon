@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="home">
     <div class="header">
       <a class="search-btn">
         <i class="el-icon-search"></i>
@@ -9,6 +9,7 @@
          <i class="el-icon-user"></i>
       </a>
     </div>
+    <main>
     <mt-swipe :auto="4000">
       <mt-swipe-item><img
           src="./assets/appimg/slide1.png"
@@ -148,8 +149,8 @@
       </a>
       <div class="telbox"><img src="./assets/appimg/tel.png" alt=""></div>
     </div>
+    </main>
     <div>
-
     </div>
     <router-view></router-view>
     <sub-nav></sub-nav>
@@ -168,10 +169,6 @@ import { Swipe, SwipeItem } from "mint-ui";
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
 Vue.component(Search.name, Search);
-export default {
-  name: "app"
-};
-
 
 
 import "../static/css/reset.css";
