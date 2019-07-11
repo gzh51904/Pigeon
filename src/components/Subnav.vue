@@ -76,6 +76,9 @@ export default {
 
 <style lang="scss">
 .sub-nav {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
   height: 98px;
   box-shadow: 0 0 6px #e9e8ec;
   display: flex;

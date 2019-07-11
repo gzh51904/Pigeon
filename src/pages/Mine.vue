@@ -10,7 +10,7 @@
       <div class="domain">
         <a href="#" v-for="item in domain" :key="item.name">
           <div class="domain-icon">
-            <img :class="'icon-'+ item.enName " :src="'../assets/mine/' + item.icon" />
+            <img :class="'icon-'+ item.enName " :src="item.imgUrl" />
           </div>
           <span>{{item.name}}</span>
         </a>
@@ -20,9 +20,9 @@
           <h2>会员专区</h2>
         </div>
         <div class="member-item">
-          <a v-for="item in member" :key="item.name">
+          <a href="#" v-for="item in member" :key="item.name">
             <div class="com-icon">
-              <img :class="'icon-'+ item.enName " :src="'../assets/mine/' + item.icon" />
+              <img :class="'icon-'+ item.enName " :src="item.imgUrl" />
             </div>
             <span>{{item.name}}</span>
           </a>
@@ -35,7 +35,7 @@
         <div class="member-item">
           <a href="#" v-for="item in commonly" :key="item.name">
             <div class="com-icon">
-              <img :class="'icon-'+ item.enName " :src="'../assets/mine/' + item.icon" />
+              <img :class="'icon-'+ item.enName " :src="item.imgUrl" />
             </div>
             <span>{{item.name}}</span>
           </a>
@@ -45,10 +45,10 @@
   </div>
 </template>
 <script>
-import Vue from "vue";
+/* import Vue from "vue";
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
-Vue.use(ElementUI);
+Vue.use(ElementUI); */
 import "../../static/scss/mine.scss";
 
 export default {
@@ -74,56 +74,82 @@ export default {
       member: [
         {
           name: "白鸽币",
-          icon: ""
+          enName: "pigeon-money",
+          icon: "pigeon-money.png"
         },
         {
           name: "勋章墙",
-          icon: ""
+          enName: "medal",
+          icon: "medal.png"
         },
         {
           name: "白鸽赠险",
-          icon: ""
+          enName: "riskGift",
+          icon: "riskGift.png"
         }
       ],
       commonly: [
         {
           name: "智能顾问",
-          icon: ""
+          enName: "intelligent-security",
+          icon: "intelligent-security.png"
         },
         {
           name: "理赔中心",
-          icon: ""
+          enName: "claim-centre",
+          icon: "claim-centre.png"
         },
         {
           name: "企业福利",
-          icon: ""
+          enName: "rmport",
+          icon: "rmport.png"
         },
         {
           name: "延保手册",
-          icon: ""
+          enName: "handbook",
+          icon: "handbook.png"
         },
         {
           name: "驾考服务",
-          icon: ""
+          enName: "driving-insurance",
+          icon: "driving-insurance.png"
         },
         {
           name: "客服",
-          icon: ""
+          enName: "kefu",
+          icon: "kefu.png"
         },
         {
           name: "售后保全",
-          icon: ""
-        },
-        {},
-        {}
+          enName: "sale-after",
+          icon: "sale-after.png"
+        }
       ]
     };
   },
-  created() {},
-  components: {},
-  beforeRouteUpdate(to, from, next) {
-    console.log(to, from);
-    next();
+  computed: {},
+  created() {
+    this.domain = this.domain.map(item => {
+      let imgUrl = require("../assets/mine/" + item.icon);
+      return (item = {
+        ...item,
+        imgUrl
+      });
+    });
+    this.member = this.member.map(item => {
+      let imgUrl = require("../assets/mine/" + item.icon);
+      return (item = {
+        ...item,
+        imgUrl
+      });
+    });
+    this.commonly = this.commonly.map(item => {
+      let imgUrl = require("../assets/mine/" + item.icon);
+      return (item = {
+        ...item,
+        imgUrl
+      });
+    });
   }
 };
 </script>
