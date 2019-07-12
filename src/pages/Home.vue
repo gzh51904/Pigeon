@@ -1,41 +1,34 @@
 <template>
   <div id="home">
+    <!-- <div class="loading" v-if="isLoading"> -->
+    <!-- </div> -->
     <div class="header">
-      <a class="search-btn">
+      <router-link class="search-btn" to="/search">
         <i class="el-icon-search"></i>
         <span>保险</span>
-      </a>
+      </router-link>
       <a href="">
         <i class="el-icon-user"></i>
       </a>
     </div>
     <main>
       <mt-swipe :auto="4000">
-        <mt-swipe-item><img
-            src="../assets/appimg/slide1.png"
-            alt=""
-          ></mt-swipe-item>
-        <mt-swipe-item><img
-            src="../assets/appimg/slide2.png"
-            alt=""
-          ></mt-swipe-item>
-        <mt-swipe-item><img
-            src="../assets/appimg/slide1.png"
-            alt=""
-          ></mt-swipe-item>
-        <mt-swipe-item><img
-            src="../assets/appimg/slide2.png"
-            alt=""
+        <mt-swipe-item
+          v-for="(item, index) in swipeList"
+          :key="index"
+        ><img
+            :src="item.imgsrc"
+            :alt="item.name"
           ></mt-swipe-item>
       </mt-swipe>
       <div class="item-list-wrapper">
-        <a href="">
+        <router-link to="/consultant">
           <img
             src="../assets/appimg/it1.gif"
             alt=""
           >
           <p>智能顾问</p>
-        </a>
+        </router-link>
         <a href="">
           <img
             src="../assets/appimg/it2.png"
@@ -98,52 +91,29 @@
         <span class="content">只因更懂你，量身定制化</span>
         <a
           href=""
+          class="refresh"
+        >
+          <i class="el-icon-refresh"></i>
+          换一换</a>
+        <a
+          href=""
           class="more"
         >更多</a>
       </div>
       <div class="yanxuan-wrapper">
-        <a href="">
+        <a
+          href="###"
+          v-for="(item, index) in yanxuanList"
+          :key="index"
+        >
           <div>
-            <h3>白鸽航空意外保险</h3>
-            <p>全球航空飞行，保障不间断！</p>
-            <p>￥30.00<span>起</span></p>
+            <h3>{{item.name}}</h3>
+            <p>{{item.content}}</p>
+            <p>{{item.price}}<span>起</span></p>
           </div>
           <img
-            src="../assets/appimg/yanxuan1.png"
-            alt=""
-          >
-        </a>
-        <a href="">
-          <div>
-            <h3>白鸽航空意外保险</h3>
-            <p>全球航空飞行，保障不间断！</p>
-            <p>￥30.00<span>起</span></p>
-          </div>
-          <img
-            src="../assets/appimg/yanxuan1.png"
-            alt=""
-          >
-        </a>
-        <a href="">
-          <div>
-            <h3>白鸽航空意外保险</h3>
-            <p>全球航空飞行，保障不间断！</p>
-            <p>￥30.00<span>起</span></p>
-          </div>
-          <img
-            src="../assets/appimg/yanxuan1.png"
-            alt=""
-          >
-        </a>
-        <a href="">
-          <div>
-            <h3>白鸽航空意外保险</h3>
-            <p>全球航空飞行，保障不间断！</p>
-            <p>￥30.00<span>起</span></p>
-          </div>
-          <img
-            src="../assets/appimg/yanxuan1.png"
-            alt=""
+            :src="item.imgsrc"
+            :alt="item.name"
           >
         </a>
       </div>
@@ -218,10 +188,17 @@
       </div>
     </main>
     <slot></slot>
+    <!-- 下拉刷新 -->
+    <!-- <van-pull-refresh
+      v-model="isLoading"
+      @refresh="onRefresh"
+    >
+      <p>刷新次数: {{ count }}</p>
+    </van-pull-refresh> -->
+    <router-view></router-view>
   </div>
 </template>
 <script>
-
 import Vue from "vue";
 import "../../static/css/app.scss";
 import "../../node_modules/mint-ui/lib/swipe/style.css";
@@ -230,21 +207,84 @@ import "../../node_modules/element-ui/lib/theme-chalk/icon.css";
 import { Search } from "mint-ui";
 import { Swipe, SwipeItem } from "mint-ui";
 import "../../static/css/reset.css";
-import subNav from "../components/Subnav.vue";
+// import { PullRefresh } from "vant";
+// Vue.use(PullRefresh);
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
 Vue.component(Search.name, Search);
 
 export default {
   name: "Home",
-  data: {},
-  components: {
-    subNav
+  data() {
+    return {
+      yanxuanList: [
+        {
+          name: "爱家庭-中老年健康险",
+          content: "牵父母的手一如当年，让他们尽享天伦之乐",
+          price: "¥480.00",
+          imgsrc:
+            "https://newm.baigebao.com/upload/baoxian/20190702/5d1acbeb95728.png"
+        },
+        {
+          name: "白鸽少儿重疾险",
+          content: "孩子健康，父母安心",
+          price: "¥40.00",
+          imgsrc:
+            "https://newm.baigebao.com/upload/baoxian/20190702/5d1acdd47d864.png"
+        },
+        {
+          name: "白鸽少儿白血病保险",
+          content: "滚蛋吧，白血病",
+          price: "¥200.00",
+          imgsrc:
+            "https://newm.baigebao.com/upload/baoxian/20190702/5d1acd939045e.png"
+        },
+        {
+          name: "出行无忧-综合交通意外保险",
+          content: "日常出行，临时出差，驾车乘车，通通适用！",
+          price: "¥100.00",
+          imgsrc:
+            "https://newm.baigebao.com/upload/baoxian/20190702/5d1af71a620b8.png"
+        }
+      ],
+      swipeList: [
+        {
+          name: "邻趣",
+          imgsrc:
+            "https://cdn.baigebao.com/upload/pc/20190702/5d1b30fb53898.png"
+        },
+        {
+          name: "飞常准",
+          imgsrc:
+            "https://cdn.baigebao.com/upload/pc/20190702/5d1b311ef2d2f.png"
+        },
+        {
+          name: "赚金币",
+          imgsrc:
+            "https://cdn.baigebao.com/upload/pc/20190710/5d255af8b699e.png"
+        },
+        {
+          name: "车轮",
+          imgsrc:
+            "https://cdn.baigebao.com/upload/pc/20190702/5d1b313b084e5.png"
+        }
+      ],
+      // isLoading: false,
+    };
   },
+  components: {},
   beforeRouteUpdate(to, from, next) {
     next();
   },
-  created() {
+  created() {},
+  methods: {
+    // onRefresh() {//下拉刷新
+    //   setTimeout(() => {
+    //     this.$toast("刷新成功");
+    //     this.isLoading = false;
+    //     this.count++;
+    //   }, 500);
+    // }
   }
 };
 </script>
