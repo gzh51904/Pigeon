@@ -72,6 +72,9 @@ export default {
     },
     goto(item) {
       this.$router.push({ name: item.name });
+    },
+    created() {
+      console.log("$route:", this.$route);
     }
   }
 };
