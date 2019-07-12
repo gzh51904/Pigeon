@@ -45,10 +45,10 @@
   </div>
 </template>
 <script>
-import Vue from "vue";
-import ElementUI from "element-ui";
-import "element-ui/lib/theme-chalk/index.css";
-Vue.use(ElementUI);
+// import Vue from "vue";
+// import ElementUI from "element-ui";
+// import "element-ui/lib/theme-chalk/index.css";
+// Vue.use(ElementUI);
 import "../../static/scss/mine.scss";
 
 export default {
