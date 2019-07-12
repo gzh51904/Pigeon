@@ -24,43 +24,47 @@ let router = new VueRouter({
         name: 'Production',
         path: '/production',
         component: Production,
-        children : [
+        children: [
+            // {
+            //     path: '/',
+            //     component: feature
+            // },
             {
-                name:"feature",
-                path:"feature",
-                component:feature
+                name: "feature",
+                path: "feature",
+                component: feature
             },
             {
-                name:"accident",
-                path:"accident",
-                component:accident
+                name: "accident",
+                path: "accident",
+                component: feature
             },
             {
-                name:"health",
-                path:"health",
-                component:health
+                name: "health",
+                path: "health",
+                component: feature
             },
             {
-                name:"lifetime",
-                path:"lifetime",
-                component:lifetime
+                name: "lifetime",
+                path: "lifetime",
+                component: feature
             },
             {
-                name:"travel",
-                path:"travel",
-                component:travel
+                name: "travel",
+                path: "travel",
+                component: feature
             },
             {
-                name:"wealth",
-                path:"wealth",
-                component:wealth
+                name: "wealth",
+                path: "wealth",
+                component: feature
             },
             {
-                name:"duty",
-                path:"duty",
-                component:duty
+                name: "duty",
+                path: "duty",
+                component: feature
             }
-            
+
         ]
     }, {
         name: 'Discover',

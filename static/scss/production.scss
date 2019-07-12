@@ -1,227 +1,252 @@
-body {
-    .clearfix::after {
-        visibility: hidden;
-        overflow: hidden;
-        content: "";
-        height: 0;
-        clear: both;
+html {
+    height: 100%;
 
-    }
+    body {
+        height: 100%;
 
-    .p-head {
-        .el-icon-search {
-            font-size: 32px;
-            margin-top: 29px;
-            margin-left: 32px;
-            margin-right: 243px;
+        .clearfix::after {
+            visibility: hidden;
+            overflow: hidden;
+            content: "";
+            height: 0;
+            clear: both;
         }
 
-        .head-name {
-            font-size: 36px;
-            color: #333333;
-        }
-
-        span:nth-child(3) {
-            color: rgb(102, 102, 102);
-            font-size: 28px;
-            position: absolute;
-            right: 31px;
-            top: 27px;
-
-        }
-    }
-
-    .p-tab {
-        width: 100%;
-        height: 200px;
-        border-top: 2px solid #ededed;
-        margin-top: 25px;
-        padding: 0 31px;
-        box-sizing: border-box;
-        display: flex;
-        flex-wrap: wrap;
-
-        li {
-            width: 25%;
+        .product {
+            height: 100%;
             display: flex;
-            // float: left;
-            align-items: center;
-            justify-content: center;
-
-            .active {
-                background: #4d72e2;
-                border-radius: 32px;
-
-                span {
-                    color: #ffffff;
-                }
-            }
-
-            div {
-                padding-top: 5px;
-                height: 54px;
-                width: 172px;
-                text-align: center;
-
-                span {
-                    color: #666666;
-                    font-size: 28px;
-                }
-            }
-        }
-    }
-
-    .p-content {
-        background: #eceef5;
-
-        .p-content-main {
-            width: 692px;
-            height: 613px;
-            margin-top: 30px;
-            margin-left: 30px;
-            background: #ffffff;
-
-            .p-content-main-top {
-                width: 100%;
-                height: 340px;
-                position: relative;
-                overflow: hidden;
-
-                .free-mark {
-                    position: absolute;
-                    right: 0;
-                    top: 0;
-                    font-size: 0.22rem;
-                    color: #fff;
-                    padding: 0 0.08rem;
-                    height: 1.48rem;
-                    line-height: 0.48rem;
-                    background: #4d72e2;
-                    transform: skewX(-25deg);
-                    -webkit-transform: skewX(-25deg);
-                    border-radius: 8px;
+            flex-direction: column;
 
 
-                    .tit {
-                        position: relative;
-                        -webkit-transform: skewX(25deg);
-                        transform: skewX(25deg);
-                        margin-top: 18px;
-                        font-size: 12px;
-                    }
-
-                    .tit::before {
-                        content: '';
-                        display: block;
-                        width: 1.35rem;
-                        height: 1.48rem;
-                        position: absolute;
-                        background: #4d72e2;
-                        top: -18px;
-                        right: -0.2rem;
-                        z-index: -1;
-
-
-                    }
+            .p-head {
+                .el-icon-search {
+                    font-size: 32px;
+                    margin-top: 29px;
+                    margin-left: 32px;
+                    margin-right: 243px;
                 }
 
-                img {
-                    width: 100%;
-                }
-
-                .pbt-sales {
-                    position: absolute;
-                    left: 1.33rem;
-                    top: .56rem;
-                    font-size: .24rem;
-                    color: #c7ccd9;
-
-                    i {
-                        position: relative;
-                        margin-top: -.01rem;
-                        border-bottom: .01rem solid #c7ccd9;
-                        box-sizing: border-box;
-                    }
-                }
-
-                .pbt-price {
-                    position: absolute;
-                    left: .34rem;
-                    bottom: 1rem;
-                    color: #4c71e0;
-                    font-family: 'PingFang-SC-Heavy';
+                .head-name {
                     font-size: 36px;
+                    color: #333333;
+                }
 
-                    i {
-                        font-size: 50px;
-                        font-weight: bold;
-                    }
-
-                    .pbt-price-up {
-                        font-size: .8rem;
-                        color: #abafb9;
-                        font-weight: normal;
-                        font-family: 'PingFang-SC-Medium';
-                    }
-
-                    .free-mark1 {
-                        font-size: 0.22rem;
-                        color: #fff;
-                        padding: 0.28rem;
-                        /* border: 2px solid #fd8c4b; */
-                        border-radius: 4px;
-                        display: inline;
-                        // margin-left: 0.2rem;
-                        position: relative;
-                        top: -2px;
-                        background: #4d72e2;
-                        border-radius: 1rem;
-                        margin-left: 20px;
-                    }
+                span:nth-child(3) {
+                    color: rgb(102, 102, 102);
+                    font-size: 28px;
+                    position: absolute;
+                    right: 31px;
+                    top: 27px;
 
                 }
             }
 
-            .product-box-bot {
+            .p-tab {
+                width: 100%;
+                height: 200px;
+                border-top: 2px solid #ededed;
+                margin-top: 25px;
+                padding: 0 31px;
+                box-sizing: border-box;
                 display: flex;
-                flex-direction: column;
-                padding: 31px 47px;
+                flex-wrap: wrap;
 
-                .pbt-advantage {
-                    color: #abafb9;
-                    font-size: 13px;
+                li {
+                    width: 25%;
                     display: flex;
-                    justify-content: space-between;
+                    // float: left;
+                    align-items: center;
+                    justify-content: center;
+                    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 
-                    li {
-                        width: 200px;
+                    -webkit-user-select: none;
+
+                    -moz-user-focus: none;
+
+                    -moz-user-select: none;
+
+                    .active {
+                        background: #4d72e2;
+                        border-radius: 32px;
+
+                        span {
+                            color: #ffffff;
+                        }
+                    }
+
+                    div {
+                        padding-top: 5px;
+                        height: 54px;
+                        width: 172px;
+                        text-align: center;
+
+
+                        span {
+                            color: #666666;
+                            font-size: 28px;
+                        }
+                    }
+                }
+            }
+            .main{
+                margin-top: 0px;
+                flex: 1;
+                overflow-y: auto;
+            }
+            .p-content {
+                background: #eceef5;
+
+                .p-content-main {
+                    width: 692px;
+                    height: 613px;
+                    margin-top: 30px;
+                    margin-left: 30px;
+                    background: #ffffff;
+
+                    .p-content-main-top {
+                        width: 100%;
+                        height: 340px;
+                        position: relative;
+                        overflow: hidden;
+
+                        .free-mark {
+                            position: absolute;
+                            right: 0;
+                            top: 0;
+                            font-size: 0.22rem;
+                            color: #fff;
+                            padding: 0 0.08rem;
+                            height: 1.48rem;
+                            line-height: 0.48rem;
+                            background: #4d72e2;
+                            transform: skewX(-25deg);
+                            -webkit-transform: skewX(-25deg);
+                            border-radius: 8px;
+
+
+                            .tit {
+                                position: relative;
+                                -webkit-transform: skewX(25deg);
+                                transform: skewX(25deg);
+                                margin-top: 18px;
+                                font-size: 12px;
+                            }
+
+                            .tit::before {
+                                content: '';
+                                display: block;
+                                width: 1.35rem;
+                                height: 1.48rem;
+                                position: absolute;
+                                background: #4d72e2;
+                                top: -18px;
+                                right: -0.2rem;
+                                z-index: -1;
+
+
+                            }
+                        }
+
+                        img {
+                            width: 100%;
+                        }
+
+                        .pbt-sales {
+                            position: absolute;
+                            left: 1.33rem;
+                            top: .56rem;
+                            font-size: .24rem;
+                            color: #c7ccd9;
+
+                            i {
+                                position: relative;
+                                margin-top: -.01rem;
+                                border-bottom: .01rem solid #c7ccd9;
+                                box-sizing: border-box;
+                            }
+                        }
+
+                        .pbt-price {
+                            position: absolute;
+                            left: .34rem;
+                            bottom: 1rem;
+                            color: #4c71e0;
+                            font-family: 'PingFang-SC-Heavy';
+                            font-size: 36px;
+
+                            i {
+                                font-size: 50px;
+                                font-weight: bold;
+                            }
+
+                            .pbt-price-up {
+                                font-size: .8rem;
+                                color: #abafb9;
+                                font-weight: normal;
+                                font-family: 'PingFang-SC-Medium';
+                            }
+
+                            .free-mark1 {
+                                font-size: 0.22rem;
+                                color: #fff;
+                                padding: 0.28rem;
+                                /* border: 2px solid #fd8c4b; */
+                                border-radius: 4px;
+                                display: inline;
+                                // margin-left: 0.2rem;
+                                position: relative;
+                                top: -2px;
+                                background: #4d72e2;
+                                border-radius: 1rem;
+                                margin-left: 20px;
+                            }
+
+                        }
+                    }
+
+                    .product-box-bot {
                         display: flex;
                         flex-direction: column;
-                        align-items: center;
-                        justify-content: center;
-                        border-right: 1px solid #dedede;
-                        height: 100px;
-                        
-                    }
-                }
+                        padding: 31px 47px;
 
-                .pbt-protect {
-                    display: flex;
-                    align-items: center;
-                    text-align: center;
-                    margin-top: 30px;
-                    span {
-                        width: 600px;
-                        height: 88px;
-                        background-color: #4c71e0;
-                        border-radius: 20px;
-                        text-align: center;
-                        color: #fff;
-                        line-height: 88px;
+                        .pbt-advantage {
+                            color: #abafb9;
+                            font-size: 13px;
+                            display: flex;
+                            justify-content: space-between;
+
+                            li {
+                                width: 200px;
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                justify-content: center;
+                                border-right: 1px solid #dedede;
+                                height: 100px;
+
+                            }
+                        }
+
+                        .pbt-protect {
+                            display: flex;
+                            align-items: center;
+                            text-align: center;
+                            margin-top: 30px;
+
+                            span {
+                                width: 600px;
+                                height: 88px;
+                                background-color: #4c71e0;
+                                border-radius: 20px;
+                                text-align: center;
+                                color: #fff;
+                                line-height: 88px;
+                            }
+                        }
                     }
+
                 }
             }
-
         }
     }
 }
