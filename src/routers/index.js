@@ -14,6 +14,11 @@ import lifetime from "../pages/lifetime.vue";
 import travel from "../pages/travel.vue";
 import wealth from "../pages/wealth.vue";
 import duty from "../pages/duty.vue";
+import Recommend from '../components/Recommend.vue';
+import Features from '../components/Features.vue';
+import Basis from '../components/Basis.vue';
+import Insurance from '../components/Insurance.vue';
+import Claims from '../components/Claims.vue';
 
 let router = new VueRouter({
   routes: [{
@@ -68,6 +73,30 @@ let router = new VueRouter({
     name: 'Discover',
     path: '/discover',
     component: Discover,
+    // 嵌套路由
+    children: [
+      {
+        name: 'Recommend',
+        path: 'recommend',
+        component: Recommend
+      }, {
+        name: 'Features',
+        path: 'reatures',
+        component: Features
+      }, {
+        name: 'Basis',
+        path: 'basis',
+        component: Basis
+      }, {
+        name: 'Insurance',
+        path: 'insurance',
+        component: Insurance
+      }, {
+        name: 'Claims',
+        path: 'claims',
+        component: Claims
+      }
+    ]
   }, {
     name: 'Mine',
     path: '/mine',
