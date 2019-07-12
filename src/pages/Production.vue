@@ -6,7 +6,13 @@
       <span class="">筛选</span>
     </div>
     <div class="p-tab">
-        <li v-for="(item,idx) in pages" :key="item.name" @click="active"><div class="active"><router-link :to="item.path"><span>{{item.title}}</span></router-link></div></li>
+        <li v-for="(item,idx) in pages" :key="item.name">
+          <router-link :to="item.path">
+            <div v-bind:class="{active:activeIdx===idx}" @click="changeTab(idx)">
+              <span>{{item.title}}</span>
+            </div>
+          </router-link>
+        </li>
         <!-- <li><div><span>健康险</span></div></li>
         <li><div><span>旅行险</span></div></li>
         <li><div><span>意外险</span></div></li>
@@ -66,8 +72,13 @@ export default {
           name: "lifetime"
         }
       ],
-      active: true
-    };
+      activeIdx: 0,
+      }
+    },
+    methods: {
+        changeTab(idx) {
+          this.activeIdx = idx;
+        }
   }
 };
 </script>
