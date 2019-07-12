@@ -8,24 +8,18 @@
 
 <script>
 import "../static/css/reset.css";
-
 import subNav from "./components/Subnav.vue";
-
 export default {
-  name: "app",
-  data: {},
   components: {
     subNav
-  },
-  beforeRouteUpdate(to, from, next) {
-    console.log(to, from);
-    next();
-  },
-  created() {
-    console.log(1);
   }
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+#app {
+  height: 100%;
+}
 </style>
+
+

@@ -21,7 +21,7 @@ html,body{
 
 .search{
     width: 690px;
-    height: 62px;
+    height: 92px;
     margin: 0 auto;
     padding-top: 12px;
     position: relative;
@@ -70,7 +70,7 @@ html,body{
     display: none;
 }
 
-.recommend,.basis{
+.recommend,.basis,.insurance,.claims{
     flex: 1;
     overflow-y: auto;
 

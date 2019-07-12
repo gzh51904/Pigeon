@@ -22,7 +22,6 @@
         </el-menu>
       </div>
     </div>
-    
     <router-view />
     <slot></slot>
   </div>
@@ -42,8 +41,6 @@ export default {
   data() {
     return {
       input: "",
-     count: 10,
-        loading: false,
       nav: [
         {
           title: "推荐",
@@ -69,27 +66,12 @@ export default {
       active: "/discover/recommend"
     };
   },
-  computed: {
-    noMore() {
-      return this.count >= 20;
-    },
-    disabled() {
-      return this.loading || this.noMore;
-    }
-  },
   methods: {
     handleSelect(index, indexPath) {
       this.active = index;
     },
     goto(item) {
       this.$router.push({ name: item.name });
-    },
-    load() {
-      this.loading = true;
-      setTimeout(() => {
-        this.count += 2;
-        this.loading = false;
-      }, 2000);
     }
   }
 };

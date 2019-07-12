@@ -1,7 +1,8 @@
-.basis{
+.basis,.insurance,.claims{
     .icon{
         margin-top: 28px;
         color:#9DABC1;
+        margin-right: 30px;
         span{
             margin-right: 16px;
             i{
@@ -10,6 +11,11 @@
         }
        
     }
+    .item-one{
+        .icon{
+            margin-right: 0;
+        }
+    }
     span{
         display: inline-block;
         border-radius: 2rem;
@@ -17,19 +23,35 @@
         height: 32px;
         padding: 4px 10px;
     }
+    p{
+            width: 690px;
+            font-size: 26px;
+            color:#979CAF;
+            margin: 17px 0 27px 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+    }
     .item{
         border-top: .6px solid #eaedf5;
         margin:0 30px 18px 30px;
+        .c-l{
+            width: 450px;
+        }
         h2{
             font-size: 36px;
             color:#343434;
             margin-top: 35px;
+            height: 92px;
             
         }
         p{
+            width: 416px;
             font-size: 26px;
             color:#979CAF;
-            margin: 75px 0 20px 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
         img{
             margin-top: 35px;
