@@ -4,29 +4,30 @@
         <li class="p-content-main" v-for="item in dataShow" :key="item.id">
           <a href="">
           <div class="p-content-main-top">
-            <div class="free-mark">
+            <div class="free-mark" v-if="item.welfare">
               <!-- v-for="item in cc" -->
               <!-- v-if="item.walfare" -->
-              <div class="tit" v-if="item.walfare">公益产品</div>
-              <template v-else></template>
+              <div class="tit" >公益产品</div>
             </div>
-            <img src="../assets/cc-img/feature1.png" alt="">
+            <template v-else></template>
+            <img :src="item.imgUrl" alt="">
             <!-- {{ cc.info.sales }} -->
-            <span class="pbt-sales">销量：<i>25775</i></span>
+            <span class="pbt-sales">销量：<i>{{item.info.sales}}</i></span>
             <span class="pbt-price">
               ￥
-              <i>0.50</i>
+              <i>{{item.info.price}}</i>
               <i class="pbt-price-up">起</i>
-              <div class="free-mark1">
+              <div class="free-mark1" v-if="item.donate">
                 5颗爱心起捐
               </div>
+              <template v-else></template>
             </span>
           </div>
           <div class="product-box-bot">
             <ul class="pbt-advantage">
-              <li>覆盖人群<br><span>广泛</span></li>
-              <li>高危职业<br><span>可保</span></li>
-              <li style="border-right:none">报销比例<br><span>100%</span></li>
+              <li>{{item.info.discription1.d1}}<br><span>{{item.info.discription1.d2}}</span></li>
+              <li>{{item.info.discription2.d1}}<br><span>{{item.info.discription2.d2}}</span></li>
+              <li style="border-right:none">{{item.info.discription3.d1}}<br><span>{{item.info.discription3.d2}}</span></li>
             </ul>
             <div class="pbt-protect">
               <span>获取保障</span>
@@ -48,10 +49,11 @@ export default {
           {
             id: 1,
             welfare: true,
-            imgUrl: "../assets/cc-img/feature1.png",
+            donate:true,
+            imgUrl: require("../assets/cc-img/feature1.png"),
             info: {
               sales: 25775,
-              price: 0.5,
+              price: "0.50",
               discription1: {
                 d1: "覆盖人群",
                 d2: "广泛"
@@ -68,68 +70,246 @@ export default {
           },
           {
             id: 2,
-            imgUrl: "../assets/cc-img/feature1.png",
+            welfare: false,
+            imgUrl: require("../assets/cc-img/feature2.png"),
             info: {
-              sales: 25775,
-              price: 0.5,
+              sales: 33675,
+              price: 150,
               discription1: {
-                d1: "覆盖人群",
-                d2: "广泛"
+                d1: "孕妇",
+                d2: "专属定制"
               },
               discription2: {
-                d1: "高危职业",
-                d2: "可保"
+                d1: "妊娠疾病",
+                d2: "补贴"
               },
               discription3: {
-                d1: "报销比例",
-                d2: "100%"
+                d1: "新生儿",
+                d2: "疾病保障"
+              }
+            }
+          },
+          {
+            id: 3,
+            welfare: false,
+            imgUrl: require("../assets/cc-img/feature3.png"),
+            info: {
+              sales: 368,
+              price: 10,
+              discription1: {
+                d1: "急性肠胃炎",
+                d2: "保障"
+              },
+              discription2: {
+                d1: "食物中毒",
+                d2: "亦保障"
+              },
+              discription3: {
+                d1: "十元便可",
+                d2: "保一年"
               }
             }
           }
+
         ],
         health: [
           {
             id: 1,
-            welfare: true,
-            imgUrl: "../assets/cc-img/feature1.png",
+            // welfare: true,
+            imgUrl: require("../assets/cc-img/health1.png"),
             info: {
-              sales: 25775,
-              price: 0.5,
+              sales: 34070,
+              price: 8,
               discription1: {
-                d1: "覆盖人群",
-                d2: "广泛"
+                d1: "25种儿童高发重",
+                d2: "疾"
               },
               discription2: {
-                d1: "高危职业",
-                d2: "可保"
+                d1: "确诊即赔",
+                d2: ""
               },
               discription3: {
-                d1: "报销比例",
-                d2: "100%"
+                d1: "1年保障仅需8元",
+                d2: ""
               }
             }
           },
           {
             id: 2,
-            imgUrl: "../assets/cc-img/feature1.png",
+            imgUrl: require("../assets/cc-img/health2.png"),
             info: {
-              sales: 25775,
-              price: 0.5,
+              sales: 33944,
+              price: 20,
               discription1: {
-                d1: "覆盖人群",
-                d2: "广泛"
+                d1: "涵盖男性高发疾",
+                d2: "病"
               },
               discription2: {
-                d1: "高危职业",
-                d2: "可保"
+                d1: "肾脏守护",
+                d2: ""
               },
               discription3: {
-                d1: "报销比例",
-                d2: "100%"
+                d1: "确诊即赔",
+                d2: ""
               }
             }
           }
-        ]
+        ],
+        travel: [
+          {
+            id: 1,
+            // welfare: true,
+            imgUrl: require("../assets/cc-img/travel1.png"),
+            info: {
+              sales: 18424,
+              price: 10,
+              discription1: {
+                d1: "驾乘车",
+                d2: "均有保障"
+              },
+              discription2: {
+                d1: "节假日",
+                d2: "额外补贴"
+              },
+              discription3: {
+                d1: "尊享道路",
+                d2: "救援服务"
+              }
+            }
+          },
+          {
+            id: 2,
+            imgUrl: require("../assets/cc-img/travel2.png"),
+            info: {
+              sales: 1670,
+              price: 55,
+              discription1: {
+                d1: "财产损失保障",
+                d2: ""
+              },
+              discription2: {
+                d1: "医疗垫付",
+                d2: ""
+              },
+              discription3: {
+                d1: "保障自动延期",
+                d2: ""
+              }
+            }
+          }
+        ],
+        accident: [
+          {
+            id: 1,
+            // welfare: true,
+            imgUrl: require("../assets/cc-img/accident1.png"),
+            info: {
+              sales: 144205,
+              price: "1.50",
+              discription1: {
+                d1: "各种意外都保",
+                d2: ""
+              },
+              discription2: {
+                d1: "1.5元保一年",
+                d2: ""
+              },
+              discription3: {
+                d1: "出生30天可买",
+                d2: ""
+              }
+            }
+          },
+          {
+            id: 2,
+            imgUrl: require("../assets/cc-img/accident2.png"),
+            info: {
+              sales: 34086,
+              price: 78,
+              discription1: {
+                d1: "海陆空",
+                d2: "全面保障"
+              },
+              discription2: {
+                d1: "一年500万",
+                d2: "保额"
+              },
+              discription3: {
+                d1: "住院",
+                d2: "额外补贴"
+              }
+            }
+          }
+        ],
+        wealth: [
+          {
+            id: 1,
+            // welfare: true,
+            imgUrl: require("../assets/cc-img/wealth1.png"),
+            info: {
+              sales: 50555,
+              price: "1",
+              discription1: {
+                d1: "外出期间保障",
+                d2: ""
+              },
+              discription2: {
+                d1: "现金首饰",
+                d2: ""
+              },
+              discription3: {
+                d1: "保障随心选",
+                d2: ""
+              }
+            }
+          },
+          {
+            id: 2,
+            imgUrl: require("../assets/cc-img/wealth2.png"),
+            info: {
+              sales: 278,
+              price: 2,
+              discription1: {
+                d1: "2.0元保1年",
+                d2: ""
+              },
+              discription2: {
+                d1: "涵盖微信",
+                d2: "支付宝"
+              },
+              discription3: {
+                d1: "全年多次赔付",
+                d2: ""
+              }
+            }
+          }
+        ],
+        duty: [
+        ],
+        lifetime: [
+          {
+            id: 1,
+            // welfare: true,
+            imgUrl: require("../assets/cc-img/lifetime1.png"),
+            info: {
+              sales: 33658,
+              price: "51",
+              discription1: {
+                d1: "意外疾病",
+                d2: "双重保障"
+              },
+              discription2: {
+                d1: "续保保额",
+                d2: "翻倍"
+              },
+              discription3: {
+                d1: "可保至",
+                d2: "80岁"
+              }
+            }
+          }
+          
+        ],
       },
       dataShow: []
     };
