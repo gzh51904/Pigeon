@@ -1,11 +1,25 @@
 <template>
   <div class="mine-container">
+    <div class="my-header">
+      <a href="#">
+        <i class="my-icon-setting"></i>
+      </a>
+      <span class="header-name">我的</span>
+      <a href="#">
+        <i class="my-icon-news"></i>
+      </a>
+    </div>
     <div class="mine-content">
       <div class="login-reg">
         <a href="#" class="head-img">
           <img src="../assets/mine/head-img.png" alt />
         </a>
-        <a href="#" class="login" @click.prevent.stop="goto('reg')">登陆/注册</a>
+        <div class="login-text">
+          <div class="user-name" v-if="logined">
+            <span id="nickName">{{ userName }}</span>
+          </div>
+          <a v-else href="#" class="login" @click.prevent.stop="goto('login')">登陆/注册</a>
+        </div>
       </div>
       <div class="domain">
         <a href="#" v-for="item in domain" :key="item.name">
@@ -53,6 +67,7 @@ Vue.use(ElementUI); */
 import "../../static/scss/mine.scss";
 
 export default {
+  props: ["logined"],
   data() {
     return {
       domain: [
@@ -125,16 +140,20 @@ export default {
           enName: "sale-after",
           icon: "sale-after.png"
         }
-      ]
+      ],
+      userName: ""
     };
   },
   methods: {
     goto(path) {
-      this.$router.replace(path);
+      this.$router.push(path);
     }
   },
   computed: {},
   created() {
+    let phoneNum = localStorage.getItem("phoneNum");
+    phoneNum ? (this.userName = phoneNum) : "";
+
     this.domain = this.domain.map(item => {
       let imgUrl = require("../assets/mine/" + item.icon);
       return (item = {

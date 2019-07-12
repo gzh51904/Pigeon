@@ -76,7 +76,7 @@ export default {
 
 <style lang="scss">
 .sub-nav {
-  position: fixed;
+  /* position: fixed; */
   background-color: #fff;
   width: 100%;
   bottom: 0;

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-view>
+    <router-view :logined="logined">
       <sub-nav></sub-nav>
     </router-view>
   </div>
@@ -10,8 +10,17 @@
 import "../static/css/reset.css";
 import subNav from "./components/Subnav.vue";
 export default {
+  data() {
+    return {
+      logined: false
+    };
+  },
   components: {
     subNav
+  },
+  created() {
+    let token = localStorage.getItem("Authorization");
+    this.logined = token ? true : false;
   }
 };
 </script>

@@ -1,6 +1,4 @@
-<template>
-  <div>注册</div>
-</template>
+<template></template>
 <script>
 export default {};
 </script>
