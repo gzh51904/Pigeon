@@ -6,7 +6,7 @@
       <span class="">筛选</span>
     </div>
     <div class="p-tab">
-        <li v-for="item in pages" :key="item.name"><div class="active"><router-link :to="item.path"><span>{{item.title}}</span></router-link></div></li>
+        <li v-for="(item,idx) in pages" :key="item.name" @click="active"><div class="active"><router-link :to="item.path"><span>{{item.title}}</span></router-link></div></li>
         <!-- <li><div><span>健康险</span></div></li>
         <li><div><span>旅行险</span></div></li>
         <li><div><span>意外险</span></div></li>
