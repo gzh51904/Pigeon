@@ -18,6 +18,11 @@ module.exports = {
         "style": true
       },
       "test"
-    ]
+    ],
+    ['import', {
+      libraryName: 'vant',
+      libraryDirectory: 'es',
+      style: true
+    }, 'vant']
   ]
 }

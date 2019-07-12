@@ -1,18 +1,26 @@
 <template>
   <div class="product">
     <div class="p-head">
-      <a href=""><span class="el-icon-search"></span></a>
+      <a href>
+        <span class="el-icon-search"></span>
+      </a>
       <span class="head-name">保险产品</span>
-      <span class="">筛选</span>
+      <span class>筛选</span>
     </div>
     <div class="p-tab">
-        <li v-for="(item,idx) in pages" :key="item.name" @click="active"><div class="active"><router-link :to="item.path"><span>{{item.title}}</span></router-link></div></li>
-        <!-- <li><div><span>健康险</span></div></li>
+      <li v-for="(item,idx) in pages" :key="item.name" @click="active">
+        <div class="active">
+          <router-link :to="item.path">
+            <span>{{item.title}}</span>
+          </router-link>
+        </div>
+      </li>
+      <!-- <li><div><span>健康险</span></div></li>
         <li><div><span>旅行险</span></div></li>
         <li><div><span>意外险</span></div></li>
         <li><div><span>财产险</span></div></li>
         <li><div><span>责任险</span></div></li>
-        <li><div><span>寿险</span></div></li> -->
+      <li><div><span>寿险</span></div></li>-->
     </div>
     <router-view></router-view>
     <slot></slot>

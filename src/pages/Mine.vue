@@ -60,10 +60,17 @@
   </div>
 </template>
 <script>
+<<<<<<< HEAD
 /* import Vue from "vue";
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
 Vue.use(ElementUI); */
+=======
+// import Vue from "vue";
+// import ElementUI from "element-ui";
+// import "element-ui/lib/theme-chalk/index.css";
+// Vue.use(ElementUI);
+>>>>>>> e551ff491d0db93cb9831ada5d363d321195d1e3
 import "../../static/scss/mine.scss";
 
 export default {

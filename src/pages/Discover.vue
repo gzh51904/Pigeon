@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div id="box">
     <div class="head">
       <div class="search">
         <i class="el-icon-search"></i>
@@ -13,10 +13,16 @@
           mode="horizontal"
           @select="handleSelect"
         >
-          <el-menu-item :index="item.name" v-for="item in nav" :key="item.name">{{item.title}}</el-menu-item>
+          <el-menu-item
+            :index="item.name"
+            v-for="item in nav"
+            :key="item.name"
+            @click="goto(item)"
+          >{{item.title}}</el-menu-item>
         </el-menu>
       </div>
     </div>
+<<<<<<< HEAD
     <div class="main">
       <div class="item-one">
         <a href="javascript:void(0);">
@@ -92,11 +98,16 @@
         </a>
       </div>
     </div>
+=======
+    <router-view />
+>>>>>>> e551ff491d0db93cb9831ada5d363d321195d1e3
     <slot></slot>
   </div>
 </template>
 <script>
-import "../../static/scss/discover.scss";
+import "../../static/scss/discover1.scss";
+import "../../static/scss/discover2.scss";
+import "../../static/scss/discover3.scss";
 import "../../node_modules/element-ui/lib/theme-chalk/icon.css";
 
 import Vue from "vue";
@@ -136,6 +147,12 @@ export default {
   methods: {
     handleSelect(index, indexPath) {
       this.active = index;
+    },
+    goto(item) {
+      this.$router.push({ name: item.name });
+    },
+    created() {
+      console.log("$route:", this.$route);
     }
   }
 };
