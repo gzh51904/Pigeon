@@ -41,7 +41,7 @@
 
 <script>
 export default {
-  props: ["pType"],
+  // props: ["pType"],
   data() {
     return {
       data: {
@@ -312,18 +312,19 @@ export default {
     };
   },
   created() {
-    this.dataShow = this.data[this.pType];
+    this.dataShow = this.data[this.$route.name];
   },
   watch: {
-    pType() {
+    $route() {
       // this.type = this.pType; //这是去哪个子路由的name
       // console.log(this.type);
+      console.log(this.$route);
       this.dataShow = [];
       //this.data[type]=data1
       //axios.get('',query:{health}) //子路由的name通过字段查询mongodb
       //this.data.dataShow = data1  //data1是后端请求查询成功返回的数据
-      this.dataShow = this.data[this.pType];
-      console.log(this.dataShow);
+      this.dataShow = this.data[this.$route.name];
+      // console.log(this.dataShow);
 
       //data1= [...]
       //this.dataShow = data1
