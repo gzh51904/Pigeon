@@ -24,10 +24,9 @@ Vue.use(VueRouter);
 
 let router = new VueRouter({
 
-    
 
-    routes: [
-        {
+
+    routes: [{
             //重定向
             path: '/',
             redirect: '/home'
@@ -48,10 +47,6 @@ let router = new VueRouter({
             component: Consultant,
         },
         {
-            name: 'Discover',
-            path: '/discover',
-            component: Discover,
-        }, {
             name: 'Mine',
             path: '/mine',
             component: Mine,
@@ -100,7 +95,7 @@ let router = new VueRouter({
                     component: feature
                 }
 
-    
+
 
             ]
         },
@@ -109,33 +104,27 @@ let router = new VueRouter({
             path: '/discover',
             component: Discover,
             // 嵌套路由
-            children: [
-                {
-                    name: 'Recommend',
-                    path: 'recommend',
-                    component: Recommend
-                }, {
-                    name: 'Features',
-                    path: 'features',
-                    component: Features
-                }, {
-                    name: 'Basis',
-                    path: 'basis',
-                    component: Basis
-                }, {
-                    name: 'Insurance',
-                    path: 'insurance',
-                    component: Insurance
-                }, {
-                    name: 'Claims',
-                    path: 'claims',
-                    component: Claims
-                }
-            ]
-        }, {
-            name: 'Mine',
-            path: '/mine',
-            component: Mine,
+            children: [{
+                name: 'Recommend',
+                path: 'recommend',
+                component: Recommend
+            }, {
+                name: 'Features',
+                path: 'features',
+                component: Features
+            }, {
+                name: 'Basis',
+                path: 'basis',
+                component: Basis
+            }, {
+                name: 'Insurance',
+                path: 'insurance',
+                component: Insurance
+            }, {
+                name: 'Claims',
+                path: 'claims',
+                component: Claims
+            }]
         },
         {
             name: 'Login',

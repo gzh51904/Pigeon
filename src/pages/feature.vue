@@ -312,7 +312,7 @@ export default {
     };
   },
   created() {
-    this.dataShow = this.data.feature;
+    this.dataShow = this.data[this.pType];
   },
   watch: {
     pType() {
