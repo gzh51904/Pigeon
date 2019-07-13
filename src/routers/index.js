@@ -17,8 +17,6 @@ import duty from "../pages/duty.vue";
 import Recommend from '../components/Recommend.vue';
 import Features from '../components/Features.vue';
 import Basis from '../components/Basis.vue';
-import Insurance from '../components/Insurance.vue';
-import Claims from '../components/Claims.vue';
 
 let router = new VueRouter({
   routes: [{
@@ -90,11 +88,11 @@ let router = new VueRouter({
       }, {
         name: 'Insurance',
         path: 'insurance',
-        component: Insurance
+        component: Basis
       }, {
         name: 'Claims',
         path: 'claims',
-        component: Claims
+        component: Basis
       }
     ]
   }, {

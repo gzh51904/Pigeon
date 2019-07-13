@@ -4,7 +4,12 @@
       <i class="nav-icon" :class="item.title"></i>
       <span class="text">{{item.cnName}}</span>
     </a>-->
-    <router-link v-for="item in nav" :key="item.title" :to="{path:item.path}">
+    <router-link
+      v-for="item in nav"
+      :key="item.title"
+      :to="{path:item.path}"
+      @click.native="change(item.title)"
+    >
       <i v-if="activeRouter == item.name" class="nav-icon" :class="activeRouter"></i>
       <i v-else class="nav-icon" :class="item.title"></i>
       <span class="text">{{item.cnName}}</span>
@@ -28,6 +33,7 @@
 <script>
 import Vue from "vue";
 import { Col, Menu, MenuItem } from "element-ui";
+import { log } from "util";
 Vue.use(Menu);
 Vue.use(MenuItem);
 Vue.use(Col);
@@ -52,7 +58,7 @@ export default {
           name: "Discover",
           cnName: "发现",
           title: "discover",
-          path: "/discover"
+          path: "/discover/recommend"
         },
         {
           name: "Mine",
@@ -63,7 +69,11 @@ export default {
       ]
     };
   },
-  methods: {},
+  methods: {
+    change(item) {
+      this.$store.state.subState = item;
+    }
+  },
   beforeRouteUpdate(to, from, next) {
     console.log(to, from);
     next();
