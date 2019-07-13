@@ -1,5 +1,49 @@
 .mine-container {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+
+    .my-header {
+        display: flex;
+        margin: 0 4.4vw;
+        justify-content: space-between;
+
+        .my-icon-setting {
+            display: block;
+            width: 88px;
+            height: 88px;
+            background: url(../../src/assets/mine/setting.png) no-repeat left center;
+            background-size: 40px 40px;
+        }
+
+        .header-name {
+            font-size: 36px;
+            line-height: 88px;
+            color: #333333;
+        }
+
+        .my-icon-news {
+            display: block;
+            width: 88px;
+            height: 88px;
+            background: url(../../src/assets/mine/news.png) no-repeat right center;
+            background-size: 40px 40px;
+        }
+
+        /* span:nth-child(3) {
+            color: rgb(102, 102, 102);
+            font-size: 28px;
+            position: absolute;
+            right: 31px;
+            top: 27px;
+
+        } */
+    }
+
     .mine-content {
+        flex: 1;
+        overflow-y: auto;
+
         .login-reg {
             margin: 4.4vw 4.4vw 0 4.4vw;
             width: 91.2vw;
@@ -33,6 +77,18 @@
                 margin-top: 12.1333vw;
                 margin-left: 4.1333vw;
             }
+
+            .user-name {
+                height: 48px;
+                margin-bottom: 26px;
+                color: #fff;
+                font-size: 36px;
+            }
+
+            .login-text {
+                float: left;
+                height: 100%;
+            }
         }
 
         .domain {
@@ -64,7 +120,7 @@
 
         .service {
             .member-title {
-                padding: 39px;
+                padding: 0 39px;
                 line-height: 34px;
                 font-weight: 700;
                 margin: 13px 0 28px 0;
