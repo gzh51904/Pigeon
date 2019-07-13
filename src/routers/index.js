@@ -90,9 +90,6 @@ let router = new VueRouter({
           path: "duty",
           component: feature
         }
-
-
-
       ]
     },
     {
