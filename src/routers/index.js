@@ -21,6 +21,7 @@ import Claims from '../components/Claims.vue';
 Vue.use(VueRouter);
 
 let router = new VueRouter({
+
     routes: [
         {
             //重定向
@@ -55,6 +56,10 @@ let router = new VueRouter({
             path: '/production',
             component: Production,
             children: [
+                // {
+                //     path: '/',
+                //     component: feature
+                // },
                 {
                     name: "feature",
                     path: "feature",
@@ -63,33 +68,34 @@ let router = new VueRouter({
                 {
                     name: "accident",
                     path: "accident",
-                    component: accident
+                    component: feature
                 },
                 {
                     name: "health",
                     path: "health",
-                    component: health
+                    component: feature
                 },
                 {
                     name: "lifetime",
                     path: "lifetime",
-                    component: lifetime
+                    component: feature
                 },
                 {
                     name: "travel",
                     path: "travel",
-                    component: travel
+                    component: feature
                 },
                 {
                     name: "wealth",
                     path: "wealth",
-                    component: wealth
+                    component: feature
                 },
                 {
                     name: "duty",
                     path: "duty",
-                    component: duty
+                    component: feature
                 }
+    
             ]
         },
         {
@@ -104,7 +110,7 @@ let router = new VueRouter({
                     component: Recommend
                 }, {
                     name: 'Features',
-                    path: 'reatures',
+                    path: 'features',
                     component: Features
                 }, {
                     name: 'Basis',
@@ -126,5 +132,6 @@ let router = new VueRouter({
             component: Mine,
         }]
 })
+
 
 export default router;
