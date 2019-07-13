@@ -16,6 +16,9 @@ import Basis from '../components/Basis.vue';
 Vue.use(VueRouter);
 
 let router = new VueRouter({
+
+
+
     routes: [{
             //重定向
             path: '/',
@@ -36,15 +39,8 @@ let router = new VueRouter({
             path: '/consultant',
             component: Consultant,
         },
+
         {
-            name: 'Discover',
-            path: '/discover',
-            component: Discover,
-        }, {
-            name: 'Mine',
-            path: '/mine',
-            component: Mine,
-        }, {
             name: 'Production',
             path: '/production',
             component: Production,
@@ -76,11 +72,11 @@ let router = new VueRouter({
                     name: "travel",
                     path: "travel",
                     component: feature
-                },{
+                }, {
                     name: "wealth",
                     path: "wealth",
                     component: feature
-                },{
+                }, {
                     name: "duty",
                     path: "duty",
                     component: feature

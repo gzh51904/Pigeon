@@ -19,7 +19,7 @@
         </el-menu>
       </div>
     </div>
-    <router-view />
+    <router-view></router-view>
     <slot></slot>
   </div>
 </template>
@@ -39,6 +39,7 @@ export default {
   data() {
     return {
       input: "",
+      type: "",
       nav: [
         {
           title: "推荐",
@@ -77,7 +78,8 @@ export default {
   },
   updated() {
     if (this.$store.state.subState == "discover") {
-      this.active = "Recommend";
+      // console.log(this.$route);
+      this.active = this.$route.name;
     }
     this.$store.state.subState = "";
     if (this.$store.state.subState == "") {

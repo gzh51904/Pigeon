@@ -21,8 +21,8 @@
         <li><div><span>意外险</span></div></li>
         <li><div><span>财产险</span></div></li>
         <li><div><span>责任险</span></div></li>
-       <li><div><span>寿险</span></div></li>-->
-    </div>    
+      <li><div><span>寿险</span></div></li>-->
+    </div>
     <div class="main">
       <router-view></router-view>
     </div>

@@ -82,6 +82,9 @@ export default {
   },
   created() {
     this.activeRouter = window.location.hash.slice(2).split("/")[0];
+  },
+  watch: {
+    $route() {}
   }
 };
 </script>

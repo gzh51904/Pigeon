@@ -21,6 +21,9 @@ export default {
   created() {
     let token = localStorage.getItem("Authorization");
     this.logined = token ? true : false;
+  },
+  watch: {
+    $route() {}
   }
 };
 </script>
