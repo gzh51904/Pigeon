@@ -314,6 +314,11 @@ export default {
       dataShow: []
     };
   },
+  created(){
+    console.log(Window.location.hash);
+    
+    this.dataShow =  this.data.feature;
+  },
   watch: {
     pType() {
       // this.type = this.pType; //这是去哪个子路由的name
