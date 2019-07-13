@@ -5,6 +5,8 @@ import Consultant from '../pages/Consultant.vue'
 import Discover from '../pages/Discover.vue';
 import Production from '../pages/Production.vue';
 import Mine from '../pages/Mine.vue';
+import Login from '../pages/Login.vue';
+import Reg from '../pages/Reg.vue';
 import Search from '../pages/Search.vue';
 import feature from "../pages/feature.vue";
 import health from "../pages/health.vue";
@@ -21,6 +23,8 @@ import Claims from '../components/Claims.vue';
 Vue.use(VueRouter);
 
 let router = new VueRouter({
+
+    
 
     routes: [
         {
@@ -95,7 +99,9 @@ let router = new VueRouter({
                     path: "duty",
                     component: feature
                 }
+
     
+
             ]
         },
         {
@@ -130,8 +136,20 @@ let router = new VueRouter({
             name: 'Mine',
             path: '/mine',
             component: Mine,
-        }]
-})
+        },
+        {
+            name: 'Login',
+            path: '/login',
+            component: Login,
+        },
+        {
+            name: 'Reg',
+            path: '/reg',
+            component: Reg,
+        }
+    ]
+});
+
 
 
 export default router;
