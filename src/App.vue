@@ -1,6 +1,10 @@
 <template>
   <div id="app">
+<<<<<<< HEAD
     <router-view>
+=======
+    <router-view :logined="logined">
+>>>>>>> d7c1f261e5b14b380abd38f20fa71bf10816aaab
       <sub-nav></sub-nav>
     </router-view>
   </div>
@@ -18,6 +22,13 @@ export default {
   },
   created() {
     let token = localStorage.getItem("Authorization");
+<<<<<<< HEAD
+=======
+    this.logined = token ? true : false;
+  },
+  watch: {
+    $route() {}
+>>>>>>> d7c1f261e5b14b380abd38f20fa71bf10816aaab
   }
 };
 </script>

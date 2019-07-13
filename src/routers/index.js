@@ -9,12 +9,6 @@ import Login from '../pages/Login.vue';
 import Reg from '../pages/Reg.vue';
 import Search from '../pages/Search.vue';
 import feature from "../pages/feature.vue";
-import health from "../pages/health.vue";
-import accident from "../pages/accident.vue";
-import lifetime from "../pages/lifetime.vue";
-import travel from "../pages/travel.vue";
-import wealth from "../pages/wealth.vue";
-import duty from "../pages/duty.vue";
 import Recommend from '../components/Recommend.vue';
 import Features from '../components/Features.vue';
 import Basis from '../components/Basis.vue';
@@ -45,11 +39,7 @@ let router = new VueRouter({
             path: '/consultant',
             component: Consultant,
         },
-        {
-            name: 'Mine',
-            path: '/mine',
-            component: Mine,
-        },
+
         {
             name: 'Production',
             path: '/production',
@@ -73,22 +63,19 @@ let router = new VueRouter({
                     name: "lifetime",
                     path: "lifetime",
                     component: feature
-                },
-                {
+                }, {
                     name: "travel",
                     path: "travel",
                     component: feature
-                },
-                {
+                }, {
                     name: "wealth",
                     path: "wealth",
                     component: feature
-                },
-                {
+                }, {
                     name: "duty",
                     path: "duty",
                     component: feature
-                }
+                },
             ]
         },
         {
@@ -102,7 +89,7 @@ let router = new VueRouter({
                 component: Recommend
             }, {
                 name: 'Features',
-                path: 'reatures',
+                path: 'features',
                 component: Features
             }, {
                 name: 'Basis',
@@ -117,6 +104,10 @@ let router = new VueRouter({
                 path: 'claims',
                 component: Basis
             }]
+        }, {
+            name: 'Mine',
+            path: '/mine',
+            component: Mine,
         },
         {
             name: 'Login',
