@@ -8,20 +8,20 @@
       <span class>筛选</span>
     </div>
     <div class="p-tab">
-        <li v-for="(item,idx) in pages" :key="item.name">
-          <router-link :to="item.path">
-            <div v-bind:class="{active:activeIdx===idx}" @click="changeTab(idx)">
-              <span>{{item.title}}</span>
-            </div>
-          </router-link>
-        </li>
-        <!-- <li><div><span>健康险</span></div></li>
+      <li v-for="(item,idx) in pages" :key="item.name">
+        <router-link :to="item.path">
+          <div v-bind:class="{active:activeIdx===idx}" @click="changeTab(idx)">
+            <span>{{item.title}}</span>
+          </div>
+        </router-link>
+      </li>
+      <!-- <li><div><span>健康险</span></div></li>
         <li><div><span>旅行险</span></div></li>
         <li><div><span>意外险</span></div></li>
         <li><div><span>财产险</span></div></li>
         <li><div><span>责任险</span></div></li>
-       <li><div><span>寿险</span></div></li>-->
-    </div>    
+      <li><div><span>寿险</span></div></li>-->
+    </div>
     <div class="main">
       <router-view :pType="type"></router-view>
     </div>

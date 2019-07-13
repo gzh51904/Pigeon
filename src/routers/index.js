@@ -47,14 +47,6 @@ let router = new VueRouter({
       component: Consultant,
     },
     {
-      name: 'Discover',
-      path: '/discover',
-      component: Discover,
-    }, {
-      name: 'Mine',
-      path: '/mine',
-      component: Mine,
-    }, {
       name: 'Production',
       path: '/production',
       component: Production,
