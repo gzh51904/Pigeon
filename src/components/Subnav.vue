@@ -52,7 +52,7 @@ export default {
           name: "Production",
           cnName: "产品",
           title: "production",
-          path: "/production"
+          path: "/production/feature"
         },
         {
           name: "Discover",
@@ -72,8 +72,10 @@ export default {
   methods: {
     change(item) {
       this.$store.state.subState = item;
+      console.log(this.$store.state.subState);
     }
   },
+
   beforeRouteUpdate(to, from, next) {
     console.log(to, from);
     next();
