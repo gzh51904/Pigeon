@@ -49,7 +49,7 @@ export default {
           {
             id: 1,
             welfare: true,
-            donate:true,
+            donate: true,
             imgUrl: require("../assets/cc-img/feature1.png"),
             info: {
               sales: 25775,
@@ -110,7 +110,6 @@ export default {
               }
             }
           }
-
         ],
         health: [
           {
@@ -284,8 +283,7 @@ export default {
             }
           }
         ],
-        duty: [
-        ],
+        duty: [],
         lifetime: [
           {
             id: 1,
@@ -308,31 +306,27 @@ export default {
               }
             }
           }
-          
-        ],
+        ]
       },
       dataShow: []
     };
   },
-  created(){
-    console.log(Window.location.hash);
-    
-    this.dataShow =  this.data.feature;
+  created() {
+    this.dataShow = this.data.feature;
   },
   watch: {
     pType() {
       // this.type = this.pType; //这是去哪个子路由的name
       // console.log(this.type);
-         this.dataShow = [];
+      this.dataShow = [];
       //this.data[type]=data1
       //axios.get('',query:{health}) //子路由的name通过字段查询mongodb
       //this.data.dataShow = data1  //data1是后端请求查询成功返回的数据
-    this.dataShow = this.data[this.pType];  
-    console.log(this.dataShow);
-    
-    //data1= [...]   
-    //this.dataShow = data1
-    
+      this.dataShow = this.data[this.pType];
+      console.log(this.dataShow);
+
+      //data1= [...]
+      //this.dataShow = data1
     }
   }
   // watch:{
