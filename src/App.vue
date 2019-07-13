@@ -1,10 +1,6 @@
 <template>
   <div id="app">
-<<<<<<< HEAD
     <router-view :logined="logined">
-=======
-    <router-view>
->>>>>>> e551ff491d0db93cb9831ada5d363d321195d1e3
       <sub-nav></sub-nav>
     </router-view>
   </div>
