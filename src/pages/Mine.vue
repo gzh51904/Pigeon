@@ -67,9 +67,9 @@ Vue.use(ElementUI); */
 import "../../static/scss/mine.scss";
 
 export default {
-  props: ["logined"],
   data() {
     return {
+      logined: false,
       domain: [
         {
           name: "保单",
@@ -151,8 +151,12 @@ export default {
   },
   computed: {},
   created() {
-    let phoneNum = localStorage.getItem("phoneNum");
-    phoneNum ? (this.userName = phoneNum) : "";
+    let token = localStorage.getItem("Authorization");
+    if (token) {
+      this.logined = true;
+      let phoneNum = localStorage.getItem("phoneNum");
+      phoneNum ? (this.userName = phoneNum) : "";
+    }
 
     this.domain = this.domain.map(item => {
       let imgUrl = require("../assets/mine/" + item.icon);

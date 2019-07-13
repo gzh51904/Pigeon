@@ -117,10 +117,6 @@ let router = new VueRouter({
                 path: 'claims',
                 component: Basis
             }]
-        }, {
-            name: 'Mine',
-            path: '/mine',
-            component: Mine,
         },
         {
             name: 'Login',
