@@ -11,6 +11,7 @@
         <li v-for="(item,idx) in pages" :key="item.name">
           <router-link :to="item.path">
             <div v-bind:class="{active:activeIdx===idx}" @click="changeTab(idx)">
+              <!-- <div @click="changeTab(idx)"> -->
               <span>{{item.title}}</span>
             </div>
           </router-link>
@@ -23,7 +24,7 @@
        <li><div><span>寿险</span></div></li>-->
     </div>    
     <div class="main">
-      <router-view :pType="type"></router-view>
+      <router-view></router-view>
     </div>
     <slot></slot>
   </div>
@@ -40,7 +41,7 @@ export default {
   name: "product",
   data() {
     return {
-      type: "feature",
+      // type: "feature",
       pages: [
         {
           title: "特色",
@@ -86,15 +87,28 @@ export default {
       this.activeIdx = idx;
     }
   },
+  updated(){
+    // if(this.$store.state.subState=="production"){
+    //   this.activeIdx =0
+    // }
+    // if(this.$store.state.subState==''){
+    //   this.activeIdx = idx
+    // }
+    
+    
+  },
   // created() {
   //   this.$store.state.pType = "feature";
   // },
-  beforeRouteUpdate(to, from, next) {
-    // console.log(to.name, from.name);
-    this.type = to.name;
-    //this.$store.state.pType = to.name;
-    next();
-  }
+  // created(){
+  //   this.$router.push('/production/feature')
+  // },
+  // beforeRouteUpdate(to, from, next) {
+  //   // console.log(to.name, from.name);
+  //   this.type = to.name;
+  //   //this.$store.state.pType = to.name;
+  //   next();
+  // }
   // beforeRouteUpdate(to,from,next){
   //   this.type = to.name;
   //   next()

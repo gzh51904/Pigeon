@@ -9,25 +9,14 @@ import Login from '../pages/Login.vue';
 import Reg from '../pages/Reg.vue';
 import Search from '../pages/Search.vue';
 import feature from "../pages/feature.vue";
-import health from "../pages/health.vue";
-import accident from "../pages/accident.vue";
-import lifetime from "../pages/lifetime.vue";
-import travel from "../pages/travel.vue";
-import wealth from "../pages/wealth.vue";
-import duty from "../pages/duty.vue";
 import Recommend from '../components/Recommend.vue';
 import Features from '../components/Features.vue';
 import Basis from '../components/Basis.vue';
-import Insurance from '../components/Insurance.vue';
-import Claims from '../components/Claims.vue';
+
 Vue.use(VueRouter);
 
 let router = new VueRouter({
-
-    
-
-    routes: [
-        {
+    routes: [{
             //重定向
             path: '/',
             redirect: '/home'
@@ -83,25 +72,19 @@ let router = new VueRouter({
                     name: "lifetime",
                     path: "lifetime",
                     component: feature
-                },
-                {
+                }, {
                     name: "travel",
                     path: "travel",
                     component: feature
-                },
-                {
+                },{
                     name: "wealth",
                     path: "wealth",
                     component: feature
-                },
-                {
+                },{
                     name: "duty",
                     path: "duty",
                     component: feature
-                }
-
-    
-
+                },
             ]
         },
         {
@@ -109,29 +92,27 @@ let router = new VueRouter({
             path: '/discover',
             component: Discover,
             // 嵌套路由
-            children: [
-                {
-                    name: 'Recommend',
-                    path: 'recommend',
-                    component: Recommend
-                }, {
-                    name: 'Features',
-                    path: 'features',
-                    component: Features
-                }, {
-                    name: 'Basis',
-                    path: 'basis',
-                    component: Basis
-                }, {
-                    name: 'Insurance',
-                    path: 'insurance',
-                    component: Insurance
-                }, {
-                    name: 'Claims',
-                    path: 'claims',
-                    component: Claims
-                }
-            ]
+            children: [{
+                name: 'Recommend',
+                path: 'recommend',
+                component: Recommend
+            }, {
+                name: 'Features',
+                path: 'features',
+                component: Features
+            }, {
+                name: 'Basis',
+                path: 'basis',
+                component: Basis
+            }, {
+                name: 'Insurance',
+                path: 'insurance',
+                component: Basis
+            }, {
+                name: 'Claims',
+                path: 'claims',
+                component: Basis
+            }]
         }, {
             name: 'Mine',
             path: '/mine',
