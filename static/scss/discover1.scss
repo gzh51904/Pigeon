@@ -76,29 +76,35 @@ html,body{
 
       
     .item-one{
-        width: 688px;
-        height: 405px;
-        margin: 42px auto 0 auto;
+        width: 99.66667vw;
+        background:#F7F7F7;
+        padding-bottom: 20px;
+        a{
+            display: block;
+            background: #fff;
+            width: 99.66667vw;
+            padding-left: 42px;
+        }
 
     h2{
         font-size: 36px;
-        color:#343434
+        color:#343434;
+        padding: 30px 0;
     }
     p{
         font-size: 26px;
         color:#979CAF;
-        margin: 30px 0 20px 0;
+       margin-bottom: 20px;
     }
     .img{
-        width: 688px;
-        height: 190px;
         img{
-            width: 229px;
-            height: 190px;
+            width: 220px;
+            height: 160px;
+            margin-right: 15px;
         }
-    }
+        }
     .icon{
-        margin-top: 28px;
+        padding: 28px 0;
         color:#9DABC1;
         span{
             margin-right: 16px;
@@ -109,45 +115,10 @@ html,body{
        
     }
     }
-    .item-two,.item-four{
-        background:#F7F7F7;
-        margin: 0 auto;
-        padding-top: 20px;
- 
-    a{
-        display: block;
-        background: #fff;
-        padding:0 0 34px 30px;
-        
-        h2{
-            font-size: 36px;
-            color:#343434;
-            padding: 44px 0 24px 0;
-        }
-        .img{
-            img{
-                width: 220px;
-                height: 160px;
-                margin-right: 15px;
-            }
-            }
-            .icon{
-                margin-top: 28px;
-                color:#9DABC1;
-                span{
-                    margin-right: 16px;
-                    i{
-                        margin-right: 8px;
-                    }
-                }
-               
-            }
-        }
-    }
+  
     .item-three{
         background:#F7F7F7;
         margin: 0 auto;
-        padding-top: 20px;
  
     a{
         display: block;
@@ -177,5 +148,9 @@ html,body{
                 margin-right: 15px;
             }
         }
+    }
+    .item-four{
+        padding-bottom: 0px;
+        padding-top: 20px;
     }
 }

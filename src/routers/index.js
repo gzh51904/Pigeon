@@ -18,11 +18,13 @@ import duty from "../pages/duty.vue";
 import Recommend from '../components/Recommend.vue';
 import Features from '../components/Features.vue';
 import Basis from '../components/Basis.vue';
-import Insurance from '../components/Insurance.vue';
-import Claims from '../components/Claims.vue';
+
 Vue.use(VueRouter);
 
 let router = new VueRouter({
+
+
+
     routes: [{
             //重定向
             path: '/',
@@ -44,14 +46,11 @@ let router = new VueRouter({
             component: Consultant,
         },
         {
-            name: 'Discover',
-            path: '/discover',
-            component: Discover,
-        }, {
             name: 'Mine',
             path: '/mine',
             component: Mine,
-        }, {
+        },
+        {
             name: 'Production',
             path: '/production',
             component: Production,
@@ -63,32 +62,32 @@ let router = new VueRouter({
                 {
                     name: "accident",
                     path: "accident",
-                    component: accident
+                    component: feature
                 },
                 {
                     name: "health",
                     path: "health",
-                    component: health
+                    component: feature
                 },
                 {
                     name: "lifetime",
                     path: "lifetime",
-                    component: lifetime
+                    component: feature
                 },
                 {
                     name: "travel",
                     path: "travel",
-                    component: travel
+                    component: feature
                 },
                 {
                     name: "wealth",
                     path: "wealth",
-                    component: wealth
+                    component: feature
                 },
                 {
                     name: "duty",
                     path: "duty",
-                    component: duty
+                    component: feature
                 }
             ]
         },
@@ -112,11 +111,11 @@ let router = new VueRouter({
             }, {
                 name: 'Insurance',
                 path: 'insurance',
-                component: Insurance
+                component: Basis
             }, {
                 name: 'Claims',
                 path: 'claims',
-                component: Claims
+                component: Basis
             }]
         }, {
             name: 'Mine',
