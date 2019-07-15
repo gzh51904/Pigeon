@@ -75,7 +75,7 @@ export default {
           id: 1,
           name: "保单",
           enName: "warranty",
-          icon: "warranty.png",
+          icon: "warranty.png"
         },
         {
           id: 2,
@@ -153,13 +153,14 @@ export default {
     console.log(to, from);
     next();
   },
-  methods:{
-    link(){
-        this.$router.push('/Myorder');      
+  methods: {
+    link() {
+      this.$router.push("/Myorder");
     },
-       goto(path) {
+    goto(path) {
       this.$router.push(path);
-    },
+    }
+  },
   created() {
     let token = localStorage.getItem("Authorization");
     if (token) {
