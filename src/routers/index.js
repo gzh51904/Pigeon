@@ -15,10 +15,6 @@ import Basis from '../components/Basis.vue';
 
 import Yanxuan from '../pages/Yanxuan.vue';
 import Myorder from '../pages/Myorder.vue';
-<<<<<<< HEAD
-=======
-
->>>>>>> zzj
 Vue.use(VueRouter);
 
 let router = new VueRouter({
@@ -50,19 +46,6 @@ let router = new VueRouter({
             path: '/yanxuan/:type/:id',
             component: Yanxuan,
         },
-<<<<<<< HEAD
-        {
-            name: 'Discover',
-            path: '/discover',
-            component: Discover,
-        }, {
-            name: 'Mine',
-            path: '/mine',
-            component: Mine,
-        },
-=======
-
->>>>>>> zzj
         {
             name: 'Production',
             path: '/production',
