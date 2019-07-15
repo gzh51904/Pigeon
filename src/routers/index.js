@@ -12,14 +12,10 @@ import feature from "../pages/feature.vue";
 import Recommend from '../components/Recommend.vue';
 import Features from '../components/Features.vue';
 import Basis from '../components/Basis.vue';
-<<<<<<< HEAD
 import Insurance from '../components/Insurance.vue';
 import Claims from '../components/Claims.vue';
 import Yanxuan from '../pages/Yanxuan.vue';
 import Myorder from '../pages/Myorder.vue';
-=======
-
->>>>>>> d7c1f261e5b14b380abd38f20fa71bf10816aaab
 Vue.use(VueRouter);
 
 let router = new VueRouter({
@@ -46,9 +42,7 @@ let router = new VueRouter({
             path: '/consultant',
             component: Consultant,
         },
-
         {
-<<<<<<< HEAD
             name: 'Yanxuan',
             path: '/yanxuan',
             component: Yanxuan,
@@ -62,8 +56,7 @@ let router = new VueRouter({
             path: '/mine',
             component: Mine,
         }, {
-=======
->>>>>>> d7c1f261e5b14b380abd38f20fa71bf10816aaab
+        {
             name: 'Production',
             path: '/production',
             component: Production,
@@ -136,14 +129,13 @@ let router = new VueRouter({
             name: 'Mine',
             path: '/mine',
             component: Mine,
-<<<<<<< HEAD
+
         },{
             name: 'Myorder',
             path: '/myorder',
             component: Myorder,
         }]
 })
-=======
         },
         {
             name: 'Login',
@@ -158,7 +150,5 @@ let router = new VueRouter({
     ]
 });
 
-
->>>>>>> d7c1f261e5b14b380abd38f20fa71bf10816aaab
 
 export default router;

@@ -147,7 +147,6 @@ export default {
       userName: ""
     };
   },
-<<<<<<< HEAD
   created() {},
   components: {},
   beforeRouteUpdate(to, from, next) {
@@ -157,14 +156,10 @@ export default {
   methods:{
     link(){
         this.$router.push('/Myorder');      
-    }
-=======
-  methods: {
-    goto(path) {
+    },
+       goto(path) {
       this.$router.push(path);
-    }
-  },
-  computed: {},
+    },
   created() {
     let phoneNum = localStorage.getItem("phoneNum");
     phoneNum ? (this.userName = phoneNum) : "";
@@ -190,12 +185,9 @@ export default {
         imgUrl
       });
     });
->>>>>>> d7c1f261e5b14b380abd38f20fa71bf10816aaab
   }
 };
 </script>
 
 <style lang="scss" scoped>
 </style>
-
-
