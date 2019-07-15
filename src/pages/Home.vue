@@ -101,10 +101,11 @@
         >更多</a>
       </div>
       <div class="yanxuan-wrapper">
-        <a
+        <router-link
           href="###"
           v-for="(item, index) in yanxuanList"
           :key="index"
+          to="/yanxuan"
         >
           <div>
             <h3>{{item.name}}</h3>
@@ -115,7 +116,7 @@
             :src="item.imgsrc"
             :alt="item.name"
           >
-        </a>
+        </router-link>
       </div>
       <div class="title-yongche"><span class="title">轻松用车</span><span class="content">一键式报价，全流程指引</span></div>
       <div class="list-yongche">
