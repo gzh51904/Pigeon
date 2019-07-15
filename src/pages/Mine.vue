@@ -8,7 +8,7 @@
         <a href="#" class="login">登陆/注册</a>
       </div>
       <div class="domain">
-        <a href="#" v-for="item in domain" :key="item.name">
+        <a @click="link" v-for="item in domain" :key="item.name">
           <div class="domain-icon">
             <img :class="'icon-'+ item.enName " :src="'../assets/mine/' + item.icon" />
           </div>
@@ -56,16 +56,19 @@ export default {
     return {
       domain: [
         {
+          id: 1,
           name: "保单",
           enName: "warranty",
-          icon: "warranty.png"
+          icon: "warranty.png",
         },
         {
+          id: 2,
           name: "钱包",
           enName: "wallet",
           icon: "wallet.png"
         },
         {
+          id: 3,
           name: "卡券",
           enName: "CardVouche",
           icon: "CardVouche.png"
@@ -124,6 +127,11 @@ export default {
   beforeRouteUpdate(to, from, next) {
     console.log(to, from);
     next();
+  },
+  methods:{
+    link(){
+        this.$router.push('/Myorder');      
+    }
   }
 };
 </script>

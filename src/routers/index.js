@@ -18,6 +18,8 @@ import Features from '../components/Features.vue';
 import Basis from '../components/Basis.vue';
 import Insurance from '../components/Insurance.vue';
 import Claims from '../components/Claims.vue';
+import Yanxuan from '../pages/Yanxuan.vue';
+import Myorder from '../pages/Myorder.vue';
 Vue.use(VueRouter);
 
 let router = new VueRouter({
@@ -41,6 +43,11 @@ let router = new VueRouter({
             name: 'Consultant',
             path: '/consultant',
             component: Consultant,
+        },
+        {
+            name: 'Yanxuan',
+            path: '/yanxuan',
+            component: Yanxuan,
         },
         {
             name: 'Discover',
@@ -124,6 +131,10 @@ let router = new VueRouter({
             name: 'Mine',
             path: '/mine',
             component: Mine,
+        },{
+            name: 'Myorder',
+            path: '/myorder',
+            component: Myorder,
         }]
 })
 
