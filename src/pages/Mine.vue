@@ -22,7 +22,7 @@
         </div>
       </div>
       <div class="domain">
-        <a href="#" v-for="item in domain" :key="item.name">
+        <a @click="link" v-for="item in domain" :key="item.name">
           <div class="domain-icon">
             <img :class="'icon-'+ item.enName " :src="item.imgUrl" />
           </div>
@@ -72,16 +72,19 @@ export default {
       logined: false,
       domain: [
         {
+          id: 1,
           name: "保单",
           enName: "warranty",
           icon: "warranty.png"
         },
         {
+          id: 2,
           name: "钱包",
           enName: "wallet",
           icon: "wallet.png"
         },
         {
+          id: 3,
           name: "卡券",
           enName: "CardVouche",
           icon: "CardVouche.png"
@@ -144,12 +147,20 @@ export default {
       userName: ""
     };
   },
+  created() {},
+  components: {},
+  beforeRouteUpdate(to, from, next) {
+    console.log(to, from);
+    next();
+  },
   methods: {
+    link() {
+      this.$router.push("/Myorder");
+    },
     goto(path) {
       this.$router.push(path);
     }
   },
-  computed: {},
   created() {
     let token = localStorage.getItem("Authorization");
     if (token) {
@@ -165,6 +176,8 @@ export default {
         imgUrl
       });
     });
+    console.log(this.domain);
+
     this.member = this.member.map(item => {
       let imgUrl = require("../assets/mine/" + item.icon);
       return (item = {
@@ -185,5 +198,3 @@ export default {
 
 <style lang="scss" scoped>
 </style>
-
-

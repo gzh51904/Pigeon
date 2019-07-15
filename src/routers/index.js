@@ -12,9 +12,9 @@ import feature from "../pages/feature.vue";
 import Recommend from '../components/Recommend.vue';
 import Features from '../components/Features.vue';
 import Basis from '../components/Basis.vue';
-import {
-    log
-} from 'util';
+
+import Yanxuan from '../pages/Yanxuan.vue';
+import Myorder from '../pages/Myorder.vue';
 
 Vue.use(VueRouter);
 
@@ -41,6 +41,11 @@ let router = new VueRouter({
             name: 'Consultant',
             path: '/consultant',
             component: Consultant,
+        },
+        {
+            name: 'Yanxuan',
+            path: '/yanxuan/:type/:id',
+            component: Yanxuan,
         },
 
         {
@@ -78,7 +83,7 @@ let router = new VueRouter({
                     name: "duty",
                     path: "duty",
                     component: feature
-                },
+                }
             ]
         },
         {
@@ -108,11 +113,20 @@ let router = new VueRouter({
                 path: 'claims',
                 component: Basis
             }]
-        }, {
+        },
+        {
             name: 'Mine',
             path: '/mine',
             component: Mine,
+
         },
+        {
+            name: 'Myorder',
+            path: '/myorder',
+            component: Myorder,
+        },
+
+
         {
             name: 'Login',
             path: '/login',
