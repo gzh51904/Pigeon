@@ -1,29 +1,29 @@
 <template>
   <div class="basis">
-    <div class="item-one" v-for="item in list" :key="item.id" style="padding:0">
+    <div class="item-one" style="padding:0">
       <a href="javascript:void(0);">
-        <h2>{{item.h2}}</h2>
-        <p>{{item.p}}</p>
+        <h2>{{data[0].h2}}</h2>
+        <p>{{data[0].p}}</p>
         <div class="img">
-          <img :src="item.img1" alt />
-          <img :src="item.img2" alt />
-          <img :src="item.img3" alt />
+          <img :src="data[0].imgUrl" alt />
+          <img :src="data[0].imgUrl2" alt />
+          <img :src="data[0].imgUrl3" alt />
         </div>
         <div class="icon">
           <span>
             <i class="el-icon-view"></i>
-            {{item.view}}
+            {{data[0].view}}
           </span>
           <span>
             <i class="el-icon-share"></i>
-            {{item.share}}
+            {{data[0].share}}
           </span>
         </div>
       </a>
     </div>
     <div class="infinite-list-wrapper">
       <ul class="list" v-infinite-scroll="load" infinite-scroll-disabled="disabled">
-        <li v-for="item in goodslist" class="list-item" :key="item.id">
+        <li v-for="item of goodslist" class="list-item" :key="item.id">
           <div class="item">
             <a href="javascript:void(0);">
               <div class="con clearfix">
@@ -32,7 +32,7 @@
                   <p>{{item.p}}</p>
                 </div>
                 <div class="f-r fr">
-                  <img :src="item.img" alt />
+                  <img :src="item.imgUrl" alt />
                 </div>
               </div>
               <div class="icon clearfix">
@@ -61,7 +61,7 @@
   </div>
 </template>
 <script>
-let goods = {
+/* let goods = {
   Basis: [
     {
       id: 1,
@@ -303,7 +303,7 @@ let goods2 = {
       share: 19
     }
   ]
-};
+}; */
 
 import { InfiniteScroll } from "element-ui";
 
@@ -314,7 +314,7 @@ export default {
       count: 4,
       goodslist: [],
       loading: false,
-      list: [
+      /* list: [
         {
           id: 1,
           h2: "这些社保知识你都知道吗？",
@@ -325,9 +325,9 @@ export default {
           view: 639,
           share: 1
         }
-      ],
-      data: {
-        Basis: [
+      ], */
+      /* data: { */
+      /* Basis: [
           {
             id: 1,
             h2: "为什么大家都不喜欢保险呢?",
@@ -464,13 +464,14 @@ export default {
             view: 628,
             share: 19
           }
-        ]
-      }
+        ] */
+      /* } */
+      data: []
     };
   },
   computed: {
     noMore() {
-      return this.count >= 10;
+      return this.count >= 8;
     },
     disabled() {
       return this.loading || this.noMore;
@@ -480,24 +481,102 @@ export default {
     load() {
       this.loading = true;
       setTimeout(() => {
-        this.count += 2;
-        // console.log(this.count);
-        this.goodslist = goods2[this.$route.name];
+        this.count += 1;
+
+        //下滑请求加载数据
+        let type = this.$route.name.toLowerCase();
+        let limit = this.count;
+        this.$axios
+          .get("http://localhost:1904/discover", {
+            params: {
+              type
+            }
+          })
+          .then(res => {
+            let { data, headers } = res;
+            // console.log(data.obj);
+            if (data.obj.length) {
+              this.data = data.obj.map(item => {
+                let imgUrl = require("../assets/discover-img/" + item.img1);
+                let imgUrl2 = require("../assets/discover-img/" + item.img2);
+                let imgUrl3 = require("../assets/discover-img/" + item.img3);
+                return (item = {
+                  ...item,
+                  imgUrl,
+                  imgUrl2,
+                  imgUrl3
+                });
+              });
+
+              this.goodslist = this.data.slice(1, 5 + this.count);
+            }
+          });
         this.loading = false;
-      }, 2000);
-    }
+      }, 1000);
+    },
+    list() {}
   },
   created() {
-    this.goodslist = this.data["Basis"];
-    this.list = goods[this.$route.name];
-    this.goodslist = this.data[this.$route.name];
+    let type = this.$route.name.toLowerCase();
+    this.$axios
+      .get("http://localhost:1904/discover", {
+        params: {
+          type
+        }
+      })
+      .then(res => {
+        let { data, headers } = res;
+        console.log(data.obj);
+        if (data.obj.length) {
+          this.data = data.obj.map(item => {
+            let imgUrl = require("../assets/discover-img/" + item.img1);
+            let imgUrl2 = require("../assets/discover-img/" + item.img2);
+            let imgUrl3 = require("../assets/discover-img/" + item.img3);
+            return (item = {
+              ...item,
+              imgUrl,
+              imgUrl2,
+              imgUrl3
+            });
+          });
+
+          this.goodslist = this.data.slice(1, 5);
+          console.log(this.goodslist);
+        }
+      });
   },
   watch: {
     $route() {
       // console.log(this.$route);
-      this.list = goods[this.$route.name];
-      this.goodslist = this.data[this.$route.name];
+      /* this.list = goods[this.$route.name];
+      this.goodslist = this.data[this.$route.name]; */
       this.count = 4;
+      let type = this.$route.name.toLowerCase();
+      this.$axios
+        .get("http://localhost:1904/discover", {
+          params: {
+            type
+          }
+        })
+        .then(res => {
+          let { data, headers } = res;
+          // console.log(data.obj);
+          if (data.obj.length) {
+            this.data = data.obj.map(item => {
+              let imgUrl = require("../assets/discover-img/" + item.img1);
+              let imgUrl2 = require("../assets/discover-img/" + item.img2);
+              let imgUrl3 = require("../assets/discover-img/" + item.img3);
+              return (item = {
+                ...item,
+                imgUrl,
+                imgUrl2,
+                imgUrl3
+              });
+            });
+
+            this.goodslist = this.data.slice(1, 5);
+          }
+        });
     }
   }
 };
