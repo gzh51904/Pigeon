@@ -13,16 +13,13 @@
           mode="horizontal"
           @select="handleSelect"
         >
-          <el-menu-item
-            :index="item.name"
-            v-for="item in nav"
-            :key="item.name"
-            @click="goto(item)"
-          >{{item.title}}</el-menu-item>
+          <el-menu-item :index="item.name" v-for="item in nav" :key="item.name" @click="goto(item)">
+            <span>{{item.title}}</span>
+          </el-menu-item>
         </el-menu>
       </div>
     </div>
-    <router-view />
+    <router-view></router-view>
     <slot></slot>
   </div>
 </template>
@@ -34,6 +31,7 @@ import "../../node_modules/element-ui/lib/theme-chalk/icon.css";
 
 import Vue from "vue";
 import { Input, MenuItem, Menu } from "element-ui";
+import { log } from "util";
 Vue.use(Input);
 Vue.use(MenuItem);
 Vue.use(Menu);
@@ -41,6 +39,7 @@ export default {
   data() {
     return {
       input: "",
+      type: "",
       nav: [
         {
           title: "推荐",
@@ -63,7 +62,7 @@ export default {
           name: "Claims"
         }
       ],
-      active: "/discover/recommend"
+      active: "Recommend"
     };
   },
   methods: {
@@ -72,9 +71,19 @@ export default {
     },
     goto(item) {
       this.$router.push({ name: item.name });
-    },
-    created() {
-      console.log("$route:", this.$route);
+    }
+  },
+  created() {
+    this.active = this.$route.name;
+  },
+  updated() {
+    if (this.$store.state.subState == "discover") {
+      // console.log(this.$route);
+      this.active = this.$route.name;
+    }
+    this.$store.state.subState = "";
+    if (this.$store.state.subState == "") {
+      this.active = this.$route.name;
     }
   }
 };

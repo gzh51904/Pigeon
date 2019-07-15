@@ -4,7 +4,12 @@
       <i class="nav-icon" :class="item.title"></i>
       <span class="text">{{item.cnName}}</span>
     </a>-->
-    <router-link v-for="item in nav" :key="item.title" :to="{path:item.path}">
+    <router-link
+      v-for="item in nav"
+      :key="item.title"
+      :to="{path:item.path}"
+      @click.native="change(item.title)"
+    >
       <i v-if="activeRouter == item.name" class="nav-icon" :class="activeRouter"></i>
       <i v-else class="nav-icon" :class="item.title"></i>
       <span class="text">{{item.cnName}}</span>
@@ -28,6 +33,7 @@
 <script>
 import Vue from "vue";
 import { Col, Menu, MenuItem } from "element-ui";
+import { log } from "util";
 Vue.use(Menu);
 Vue.use(MenuItem);
 Vue.use(Col);
@@ -46,13 +52,13 @@ export default {
           name: "Production",
           cnName: "产品",
           title: "production",
-          path: "/production"
+          path: "/production/feature"
         },
         {
           name: "Discover",
           cnName: "发现",
           title: "discover",
-          path: "/discover"
+          path: "/discover/recommend"
         },
         {
           name: "Mine",
@@ -63,19 +69,32 @@ export default {
       ]
     };
   },
-  methods: {},
+  methods: {
+    change(item) {
+      this.$store.state.subState = item;
+      console.log(this.$store.state.subState);
+    }
+  },
+
   beforeRouteUpdate(to, from, next) {
     console.log(to, from);
     next();
   },
   created() {
     this.activeRouter = window.location.hash.slice(2).split("/")[0];
+  },
+  watch: {
+    $route() {}
   }
 };
 </script>
 
 <style lang="scss">
 .sub-nav {
+  /* position: fixed; */
+  background-color: #fff;
+  width: 100%;
+  bottom: 0;
   height: 98px;
   box-shadow: 0 0 6px #e9e8ec;
   display: flex;

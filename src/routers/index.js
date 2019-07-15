@@ -5,26 +5,28 @@ import Consultant from '../pages/Consultant.vue'
 import Discover from '../pages/Discover.vue';
 import Production from '../pages/Production.vue';
 import Mine from '../pages/Mine.vue';
+import Login from '../pages/Login.vue';
+import Reg from '../pages/Reg.vue';
 import Search from '../pages/Search.vue';
 import feature from "../pages/feature.vue";
-import health from "../pages/health.vue";
-import accident from "../pages/accident.vue";
-import lifetime from "../pages/lifetime.vue";
-import travel from "../pages/travel.vue";
-import wealth from "../pages/wealth.vue";
-import duty from "../pages/duty.vue";
 import Recommend from '../components/Recommend.vue';
 import Features from '../components/Features.vue';
 import Basis from '../components/Basis.vue';
+<<<<<<< HEAD
 import Insurance from '../components/Insurance.vue';
 import Claims from '../components/Claims.vue';
 import Yanxuan from '../pages/Yanxuan.vue';
 import Myorder from '../pages/Myorder.vue';
+=======
+
+>>>>>>> d7c1f261e5b14b380abd38f20fa71bf10816aaab
 Vue.use(VueRouter);
 
 let router = new VueRouter({
-    routes: [
-        {
+
+
+
+    routes: [{
             //重定向
             path: '/',
             redirect: '/home'
@@ -44,7 +46,9 @@ let router = new VueRouter({
             path: '/consultant',
             component: Consultant,
         },
+
         {
+<<<<<<< HEAD
             name: 'Yanxuan',
             path: '/yanxuan',
             component: Yanxuan,
@@ -58,10 +62,16 @@ let router = new VueRouter({
             path: '/mine',
             component: Mine,
         }, {
+=======
+>>>>>>> d7c1f261e5b14b380abd38f20fa71bf10816aaab
             name: 'Production',
             path: '/production',
             component: Production,
             children: [
+                // {
+                //     path: '/',
+                //     component: feature
+                // },
                 {
                     name: "feature",
                     path: "feature",
@@ -70,33 +80,30 @@ let router = new VueRouter({
                 {
                     name: "accident",
                     path: "accident",
-                    component: accident
+                    component: feature
                 },
                 {
                     name: "health",
                     path: "health",
-                    component: health
+                    component: feature
                 },
                 {
                     name: "lifetime",
                     path: "lifetime",
-                    component: lifetime
-                },
-                {
+                    component: feature
+                }, {
                     name: "travel",
                     path: "travel",
-                    component: travel
-                },
-                {
+                    component: feature
+                }, {
                     name: "wealth",
                     path: "wealth",
-                    component: wealth
-                },
-                {
+                    component: feature
+                }, {
                     name: "duty",
                     path: "duty",
-                    component: duty
-                }
+                    component: feature
+                },
             ]
         },
         {
@@ -104,38 +111,54 @@ let router = new VueRouter({
             path: '/discover',
             component: Discover,
             // 嵌套路由
-            children: [
-                {
-                    name: 'Recommend',
-                    path: 'recommend',
-                    component: Recommend
-                }, {
-                    name: 'Features',
-                    path: 'reatures',
-                    component: Features
-                }, {
-                    name: 'Basis',
-                    path: 'basis',
-                    component: Basis
-                }, {
-                    name: 'Insurance',
-                    path: 'insurance',
-                    component: Insurance
-                }, {
-                    name: 'Claims',
-                    path: 'claims',
-                    component: Claims
-                }
-            ]
+            children: [{
+                name: 'Recommend',
+                path: 'recommend',
+                component: Recommend
+            }, {
+                name: 'Features',
+                path: 'features',
+                component: Features
+            }, {
+                name: 'Basis',
+                path: 'basis',
+                component: Basis
+            }, {
+                name: 'Insurance',
+                path: 'insurance',
+                component: Basis
+            }, {
+                name: 'Claims',
+                path: 'claims',
+                component: Basis
+            }]
         }, {
             name: 'Mine',
             path: '/mine',
             component: Mine,
+<<<<<<< HEAD
         },{
             name: 'Myorder',
             path: '/myorder',
             component: Myorder,
         }]
 })
+=======
+        },
+        {
+            name: 'Login',
+            path: '/login',
+            component: Login,
+        },
+        {
+            name: 'Reg',
+            path: '/reg',
+            component: Reg,
+        }
+    ]
+});
+
+
+>>>>>>> d7c1f261e5b14b380abd38f20fa71bf10816aaab
 
 export default router;
