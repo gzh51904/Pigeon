@@ -143,6 +143,7 @@
                     flex-direction: column;
                     align-items: center;
                     justify-content: center;
+                    border-right: 1px solid #f4f4f4;
 
                     img {
                         height: 50px;
@@ -156,9 +157,9 @@
                     }
                 }
 
-                a:nth-child(2n) {
-                    border-left: 1px solid #f4f4f4;
-                    border-right: 1px solid #f4f4f4;
+                a:nth-child(3n) {
+
+                    border-right: 0;
                 }
 
             }
@@ -167,7 +168,7 @@
         .commonly {
             .member-item {
                 border-top: 1px solid #f4f4f4;
-                border-bottom: 1px solid #f4f4f4;
+                /* border-bottom: 1px solid #f4f4f4; */
                 display: grid;
                 grid-template-columns: repeat(3, 248px);
                 grid-template-rows: repeat(3, 180px);
