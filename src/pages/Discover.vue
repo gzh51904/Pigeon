@@ -68,13 +68,16 @@ export default {
   methods: {
     handleSelect(index, indexPath) {
       this.active = index;
+      this.$store.state.discover = index;
     },
     goto(item) {
       this.$router.push({ name: item.name });
     }
   },
   created() {
-    this.active = this.$route.name;
+    if (this.$store.state.discover) {
+      this.active = this.$store.state.discover;
+    }
   },
   updated() {
     if (this.$store.state.subState == "discover") {

@@ -1,22 +1,22 @@
 <template>
   <div class="product">
     <div class="p-head">
-      <a href>
-        <span class="el-icon-search"></span>
+      <a href="javascript::void(0)">
+        <span class="el-icon-search" @click.prevent="goto('/search')"></span>
       </a>
       <span class="head-name">保险产品</span>
       <span class>筛选</span>
     </div>
     <div class="p-tab">
-        <li v-for="(item,idx) in pages" :key="item.name">
-          <router-link :to="item.path">
-            <div v-bind:class="{active:activeIdx===idx}" @click="changeTab(idx)">
-              <!-- <div @click="changeTab(idx)"> -->
-              <span>{{item.title}}</span>
-            </div>
-          </router-link>
-        </li>
-        <!-- <li><div><span>健康险</span></div></li>
+      <li v-for="item in pages" :key="item.name">
+        <router-link :to="item.path">
+          <div v-bind:class="{active:activeName===item.name}" @click="changeTab(item.name)">
+            <!-- <div @click="changeTab(idx)"> -->
+            <span>{{item.title}}</span>
+          </div>
+        </router-link>
+      </li>
+      <!-- <li><div><span>健康险</span></div></li>
         <li><div><span>旅行险</span></div></li>
         <li><div><span>意外险</span></div></li>
         <li><div><span>财产险</span></div></li>
@@ -79,24 +79,43 @@ export default {
           name: "lifetime"
         }
       ],
-      activeIdx: 0
+      activeName: "feature"
     };
   },
-  methods: {
-    changeTab(idx) {
-      this.activeIdx = idx;
+  created() {
+    console.log("====", this.$route.name);
+
+    if (this.$store.state.production) {
+      this.activeName = this.$store.state.production;
+      console.log("this.activeName", this.activeName);
+      return;
+    } else {
+      if (this.$route.name != "feature") {
+        this.activeName = "feature";
+        this.$router.replace("/production/feature");
+      }
     }
   },
-  updated(){
+  methods: {
+    changeTab(name) {
+      this.activeName = name;
+      //保存页面tabbar状态
+      console.log("----", name);
+
+      this.$store.state.production = name;
+    },
+    goto(path) {
+      this.$router.push(path);
+    }
+  },
+  updated() {
     // if(this.$store.state.subState=="production"){
     //   this.activeIdx =0
     // }
     // if(this.$store.state.subState==''){
     //   this.activeIdx = idx
     // }
-    
-    
-  },
+  }
   // created() {
   //   this.$store.state.pType = "feature";
   // },

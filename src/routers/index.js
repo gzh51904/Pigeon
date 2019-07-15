@@ -12,6 +12,9 @@ import feature from "../pages/feature.vue";
 import Recommend from '../components/Recommend.vue';
 import Features from '../components/Features.vue';
 import Basis from '../components/Basis.vue';
+import {
+    log
+} from 'util';
 
 Vue.use(VueRouter);
 
@@ -82,6 +85,7 @@ let router = new VueRouter({
             name: 'Discover',
             path: '/discover',
             component: Discover,
+
             // 嵌套路由
             children: [{
                 name: 'Recommend',

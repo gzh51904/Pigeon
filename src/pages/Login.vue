@@ -160,6 +160,15 @@ export default {
         height: 100%;
       }
     }
+    .input-box {
+      .input-default {
+        margin: 30px 0;
+      }
+      #eye-control {
+        float: right;
+        margin-top: 30px;
+      }
+    }
     .user-input-box {
       margin-top: 80px;
       .input-box {
