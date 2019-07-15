@@ -1,42 +1,48 @@
 <template>
-    <div class="p-content clearfix">
-      <ul>
-        <li class="p-content-main" v-for="item in dataShow" :key="item.id">
-          <a href="">
+  <div class="p-content clearfix">
+    <ul>
+      <li class="p-content-main" v-for="item in dataShow" :key="item.id">
+        <a
+          href
+          :idex="item.id"
+          :typeName="$route.name"
+          @click.prevent="goDetail($route.name,item.id)"
+        >
           <div class="p-content-main-top">
             <div class="free-mark" v-if="item.welfare">
               <!-- v-for="item in cc" -->
               <!-- v-if="item.walfare" -->
-              <div class="tit" >公益产品</div>
+              <div class="tit">公益产品</div>
             </div>
             <template v-else></template>
-            <img :src="item.imgUrl" alt="">
+            <img :src="item.imgUrl" alt />
             <!-- {{ cc.info.sales }} -->
-            <span class="pbt-sales">销量：<i>{{item.info.sales}}</i></span>
+            <span class="pbt-sales">
+              销量：
+              <i>{{item.info.sales}}</i>
+            </span>
             <span class="pbt-price">
               ￥
               <i>{{item.info.price}}</i>
               <i class="pbt-price-up">起</i>
-              <div class="free-mark1" v-if="item.donate">
-                5颗爱心起捐
-              </div>
+              <div class="free-mark1" v-if="item.donate">5颗爱心起捐</div>
               <template v-else></template>
             </span>
           </div>
           <div class="product-box-bot">
             <ul class="pbt-advantage">
-              <li>{{item.info.discription1.d1}}<br><span>{{item.info.discription1.d2}}</span></li>
-              <li>{{item.info.discription2.d1}}<br><span>{{item.info.discription2.d2}}</span></li>
-              <li style="border-right:none">{{item.info.discription3.d1}}<br><span>{{item.info.discription3.d2}}</span></li>
+              <li>{{item.info.discription1}}</li>
+              <li>{{item.info.discription2}}</li>
+              <li style="border-right:none">{{item.info.discription3}}</li>
             </ul>
             <div class="pbt-protect">
               <span>获取保障</span>
             </div>
           </div>
-          </a>         
-        </li>
-      </ul>
-    </div>
+        </a>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -45,7 +51,7 @@ export default {
   data() {
     return {
       data: {
-        feature: [
+        /* feature: [
           {
             id: 1,
             welfare: true,
@@ -306,28 +312,77 @@ export default {
               }
             }
           }
-        ]
+        ] */
       },
       dataShow: []
     };
   },
+  methods: {
+    goDetail(typeName, id) {
+      let token = localStorage.getItem("Authorization");
+      if (token) {
+        this.$router.push("/search");
+      } else {
+        this.$router.push("/login");
+      }
+    }
+  },
   created() {
-    this.dataShow = this.data[this.$route.name];
+    let type = this.$route.name;
+    this.$axios
+      .get("http://localhost:1904/production", {
+        params: {
+          type
+        }
+      })
+      .then(res => {
+        let { data, headers } = res;
+        console.log(data.obj);
+
+        this.dataShow = data.obj[0].production.map(item => {
+          let imgUrl = require("../assets/cc-img/" + item.imgUrl);
+          return (item = {
+            ...item,
+            imgUrl
+          });
+        });
+      });
   },
   watch: {
     $route() {
       // this.type = this.pType; //这是去哪个子路由的name
       // console.log(this.type);
-      console.log(this.$route);
+      //console.log(this.$route);
       this.dataShow = [];
       //this.data[type]=data1
       //axios.get('',query:{health}) //子路由的name通过字段查询mongodb
       //this.data.dataShow = data1  //data1是后端请求查询成功返回的数据
-      this.dataShow = this.data[this.$route.name];
+
       // console.log(this.dataShow);
 
       //data1= [...]
       //this.dataShow = data1
+
+      //组建复用时获取数据
+      let type = this.$route.name;
+      this.$axios
+        .get("http://localhost:1904/production", {
+          params: {
+            type
+          }
+        })
+        .then(res => {
+          let { data, headers } = res;
+          console.log(data.obj);
+
+          this.dataShow = data.obj[0].production.map(item => {
+            let imgUrl = require("../assets/cc-img/" + item.imgUrl);
+            return (item = {
+              ...item,
+              imgUrl
+            });
+          });
+        });
     }
   }
   // watch:{

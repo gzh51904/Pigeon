@@ -75,11 +75,6 @@ export default {
       console.log(this.$store.state.subState);
     }
   },
-
-  beforeRouteUpdate(to, from, next) {
-    console.log(to, from);
-    next();
-  },
   created() {
     this.activeRouter = window.location.hash.slice(2).split("/")[0];
   },

@@ -98,7 +98,7 @@ export default {
                 let temp = username.slice(0, 3) + "****" + username.slice(-4);
 
                 localStorage.setItem("phoneNum", temp);
-                //this.$store.state.phoneNum = username;
+                this.$store.state.phoneNum = temp;
 
                 // 获取目标路径
                 let targetPath = this.$route.query.redirectTo;
@@ -158,6 +158,15 @@ export default {
       .welcome-img {
         width: 501px;
         height: 100%;
+      }
+    }
+    .input-box {
+      .input-default {
+        margin: 30px 0;
+      }
+      #eye-control {
+        float: right;
+        margin-top: 30px;
       }
     }
     .user-input-box {

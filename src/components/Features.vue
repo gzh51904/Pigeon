@@ -2,7 +2,7 @@
   <div class="features">
     <div class="item" v-for="item in list" :key="item.id">
       <a href="javascript:void(0)">
-        <img :src="item.img" alt />
+        <img :src="item.imgUrl" alt />
       </a>
     </div>
   </div>
@@ -12,7 +12,7 @@ export default {
   data() {
     return {
       list: [
-        {
+        /*  {
           id: 1,
           img: require("../assets/discover-img/z1.png")
         },
@@ -39,9 +39,54 @@ export default {
         {
           id: 7,
           img: require("../assets/discover-img/z7.png")
-        }
+        } */
       ]
     };
+  },
+  created() {
+    let type = this.$route.name.toLowerCase();
+    this.$axios
+      .get("http://localhost:1904/discover", {
+        params: {
+          type
+        }
+      })
+      .then(res => {
+        let { data, headers } = res;
+        console.log(data.obj);
+        if (data.obj.length) {
+          this.list = data.obj.map(item => {
+            let imgUrl = require("../assets/discover-img/" + item.img);
+            return (item = {
+              ...item,
+              imgUrl
+            });
+          });
+        }
+      });
+  },
+  watch: {
+    $route() {
+      let type = this.$route.name.toLowerCase();
+      this.$axios
+        .get("http://localhost:1904/discover", {
+          params: {
+            type
+          }
+        })
+        .then(res => {
+          let { data, headers } = res;
+          if (data.obj.length) {
+            this.list = data.obj.map(item => {
+              let imgUrl = require("../assets/discover-img/" + item.img);
+              return (item = {
+                ...item,
+                imgUrl
+              });
+            });
+          }
+        });
+    }
   }
 };
 </script>
