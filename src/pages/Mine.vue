@@ -176,6 +176,8 @@ export default {
         imgUrl
       });
     });
+    console.log(this.domain);
+
     this.member = this.member.map(item => {
       let imgUrl = require("../assets/mine/" + item.icon);
       return (item = {
