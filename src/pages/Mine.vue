@@ -147,7 +147,6 @@ export default {
       userName: ""
     };
   },
-  created() {},
   components: {},
   beforeRouteUpdate(to, from, next) {
     console.log(to, from);

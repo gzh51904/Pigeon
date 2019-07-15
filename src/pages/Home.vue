@@ -74,23 +74,25 @@
         <a href class="more">更多</a>
       </div>
       <div class="yanxuan-wrapper">
-        <router-link
+        <a
           href="#"
           v-for="item in yanxuanList"
           :key="item.id"
-          :typeName="item.type"
-          to="/yanxuan/feature/1"
+          :typeName="item.sym"
+          @click="goto(item.id,item.sym)"
         >
           <div>
-            <h3>{{item.name}}</h3>
+            <h3>
+              <!-- {{item.name}} -->
+            </h3>
             <p>{{item.content}}</p>
             <p>
               {{item.price}}
-              <span>起</span>
+              <!-- <span>起</span> -->
             </p>
           </div>
-          <img :src="item.imgsrc" :alt="item.name" />
-        </router-link>
+          <img :src="item.imgUrl" :alt="item.name" />
+        </a>
       </div>
       <div class="title-yongche">
         <span class="title">轻松用车</span>
@@ -176,36 +178,7 @@ export default {
   name: "Home",
   data() {
     return {
-      yanxuanList: [
-        {
-          name: "爱家庭-中老年健康险",
-          content: "牵父母的手一如当年，让他们尽享天伦之乐",
-          price: "¥480.00",
-          imgsrc:
-            "https://newm.baigebao.com/upload/baoxian/20190702/5d1acbeb95728.png"
-        },
-        {
-          name: "白鸽少儿重疾险",
-          content: "孩子健康，父母安心",
-          price: "¥40.00",
-          imgsrc:
-            "https://newm.baigebao.com/upload/baoxian/20190702/5d1acdd47d864.png"
-        },
-        {
-          name: "白鸽少儿白血病保险",
-          content: "滚蛋吧，白血病",
-          price: "¥200.00",
-          imgsrc:
-            "https://newm.baigebao.com/upload/baoxian/20190702/5d1acd939045e.png"
-        },
-        {
-          name: "出行无忧-综合交通意外保险",
-          content: "日常出行，临时出差，驾车乘车，通通适用！",
-          price: "¥100.00",
-          imgsrc:
-            "https://newm.baigebao.com/upload/baoxian/20190702/5d1af71a620b8.png"
-        }
-      ],
+      yanxuanList: [],
       swipeList: [
         {
           name: "邻趣",
@@ -235,8 +208,42 @@ export default {
   beforeRouteUpdate(to, from, next) {
     next();
   },
-  created() {},
+  created() {
+    this.$axios.get("http://localhost:1904/production").then(res => {
+      let { data, headers } = res;
+
+      let num = (Math.random() * 7) | 0;
+      console.log(data.obj[num]);
+
+      this.yanxuanList = data.obj[num].production.map(item => {
+        let imgUrl = require("../assets/cc-img/" + item.imgUrl);
+        let sym = data.obj[num].type;
+        return (item = {
+          ...item,
+          imgUrl,
+          sym
+        });
+      });
+      console.log(this.yanxuanList);
+
+      /* this.dataShow = data.obj[0].production.map(item => {
+          let imgUrl = require("../assets/cc-img/" + item.imgUrl);
+          return (item = {
+            ...item,
+            imgUrl
+          });
+        }); */
+    });
+  },
   methods: {
+    goto(id, type) {
+      console.log(type);
+
+      this.$router.replace({
+        name: "Yanxuan",
+        params: { type, id }
+      });
+    }
     // onRefresh() {//下拉刷新
     //   setTimeout(() => {
     //     this.$toast("刷新成功");
