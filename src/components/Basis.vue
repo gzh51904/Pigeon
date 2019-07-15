@@ -6,8 +6,8 @@
         <p>{{data[0].p}}</p>
         <div class="img">
           <img :src="data[0].imgUrl" alt />
-          <img :src="data[0].imgUrl" alt />
-          <img :src="data[0].imgUrl" alt />
+          <img :src="data[0].imgUrl2" alt />
+          <img :src="data[0].imgUrl3" alt />
         </div>
         <div class="icon">
           <span>
@@ -471,7 +471,7 @@ export default {
   },
   computed: {
     noMore() {
-      return this.count >= 10;
+      return this.count >= 8;
     },
     disabled() {
       return this.loading || this.noMore;
@@ -481,7 +481,7 @@ export default {
     load() {
       this.loading = true;
       setTimeout(() => {
-        this.count += 2;
+        this.count += 1;
 
         //下滑请求加载数据
         let type = this.$route.name.toLowerCase();
@@ -494,13 +494,17 @@ export default {
           })
           .then(res => {
             let { data, headers } = res;
-            console.log(data.obj);
+            // console.log(data.obj);
             if (data.obj.length) {
               this.data = data.obj.map(item => {
-                let imgUrl = require("../assets/discover-img/" + item.img);
+                let imgUrl = require("../assets/discover-img/" + item.img1);
+                let imgUrl2 = require("../assets/discover-img/" + item.img2);
+                let imgUrl3 = require("../assets/discover-img/" + item.img3);
                 return (item = {
                   ...item,
-                  imgUrl
+                  imgUrl,
+                  imgUrl2,
+                  imgUrl3
                 });
               });
 
@@ -508,7 +512,7 @@ export default {
             }
           });
         this.loading = false;
-      }, 2000);
+      }, 1000);
     },
     list() {}
   },
@@ -525,14 +529,19 @@ export default {
         console.log(data.obj);
         if (data.obj.length) {
           this.data = data.obj.map(item => {
-            let imgUrl = require("../assets/discover-img/" + item.img);
+            let imgUrl = require("../assets/discover-img/" + item.img1);
+            let imgUrl2 = require("../assets/discover-img/" + item.img2);
+            let imgUrl3 = require("../assets/discover-img/" + item.img3);
             return (item = {
               ...item,
-              imgUrl
+              imgUrl,
+              imgUrl2,
+              imgUrl3
             });
           });
 
           this.goodslist = this.data.slice(1, 5);
+          console.log(this.goodslist);
         }
       });
   },
@@ -551,13 +560,17 @@ export default {
         })
         .then(res => {
           let { data, headers } = res;
-          console.log(data.obj);
+          // console.log(data.obj);
           if (data.obj.length) {
             this.data = data.obj.map(item => {
-              let imgUrl = require("../assets/discover-img/" + item.img);
+              let imgUrl = require("../assets/discover-img/" + item.img1);
+              let imgUrl2 = require("../assets/discover-img/" + item.img2);
+              let imgUrl3 = require("../assets/discover-img/" + item.img3);
               return (item = {
                 ...item,
-                imgUrl
+                imgUrl,
+                imgUrl2,
+                imgUrl3
               });
             });
 

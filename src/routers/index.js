@@ -15,7 +15,10 @@ import Basis from '../components/Basis.vue';
 
 import Yanxuan from '../pages/Yanxuan.vue';
 import Myorder from '../pages/Myorder.vue';
+<<<<<<< HEAD
 
+=======
+>>>>>>> dd7bd95073806feff07621e31c5e70c4dcc63cb1
 Vue.use(VueRouter);
 
 let router = new VueRouter({
@@ -47,8 +50,11 @@ let router = new VueRouter({
             path: '/yanxuan',
             component: Yanxuan,
         },
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> dd7bd95073806feff07621e31c5e70c4dcc63cb1
         {
             name: 'Production',
             path: '/production',

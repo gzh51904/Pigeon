@@ -6,9 +6,9 @@
         <p v-if="item.exist">{{item.p}}</p>
         <template v-else></template>
         <div class="img">
-          <img :src="item.img1" alt />
-          <img :src="item.img2" alt />
-          <img :src="item.img3" alt />
+          <img :src="item.imgUrl" alt />
+          <img :src="item.imgUrl2" alt />
+          <img :src="item.imgUrl3" alt />
         </div>
         <div class="icon">
           <span>
@@ -31,16 +31,16 @@
             <i class="el-icon-arrow-right"></i>
           </span>
         </div>
-        <img :src="item.img" alt />
+        <img :src="item.imgUrl" alt />
       </a>
     </div>
     <div class="item-one item-four" v-for="item in list3" :key="item.id">
       <a href="javascript:void(0);">
         <h2>{{item.h2}}</h2>
         <div class="img">
-          <img :src="item.img1" alt />
-          <img :src="item.img2" alt />
-          <img :src="item.img3" alt />
+          <img :src="item.imgUrl" alt />
+          <img :src="item.imgUrl2" alt />
+          <img :src="item.imgUrl3" alt />
         </div>
         <div class="icon">
           <span>
@@ -60,51 +60,41 @@
 export default {
   data() {
     return {
-      list1: [
-        {
-          id: 1,
-          h2: "这些社保知识你都知道吗？",
-          p: "在大部分人的认知里,社保就是用来看病的,但你真的懂它吗?",
-          img1: require("../assets/discover-img/ia_10001.jpg"),
-          img2: require("../assets/discover-img/ia_10002.jpg"),
-          img3: require("../assets/discover-img/ia_10003.jpg"),
-          view: 639,
-          share: 1,
-          exist: true
-        },
-        {
-          id: 2,
-          h2: "五一小长假，旅游保险怎么挑？",
-          img1: require("../assets/discover-img/ia_10004.jpg"),
-          img2: require("../assets/discover-img/ia_10005.jpg"),
-          img3: require("../assets/discover-img/ia_10006.jpg"),
-          view: 451,
-          share: 9,
-          exist: false
-        }
-      ],
-      list2: [
-        {
-          id: 3,
-          h2: "专题推荐",
-          p: "更多",
-          img: require("../assets/discover-img/ia_10007.png"),
-          view: 639,
-          share: 1
-        }
-      ],
-      list3: [
-        {
-          id: 4,
-          h2: "保险理赔的步骤是什么？",
-          img1: require("../assets/discover-img/ia_10008.png"),
-          img2: require("../assets/discover-img/ia_10009.jpg"),
-          img3: require("../assets/discover-img/ia_10010.png"),
-          view: 639,
-          share: 1
-        }
-      ]
+      list1: [],
+      list2: [],
+      list3: []
     };
+  },
+  created() {
+    let type = this.$route.name.toLowerCase();
+    this.$axios
+      .get("http://localhost:1904/discover", {
+        params: {
+          type
+        }
+      })
+      .then(res => {
+        let { data, headers } = res;
+        // console.log(data.obj);
+        if (data.obj.length) {
+          this.data = data.obj.map(item => {
+            let imgUrl = require("../assets/discover-img/" + item.img1);
+            let imgUrl2 = require("../assets/discover-img/" + item.img2);
+            let imgUrl3 = require("../assets/discover-img/" + item.img3);
+            return (item = {
+              ...item,
+              imgUrl,
+              imgUrl2,
+              imgUrl3
+            });
+          });
+
+          this.list1 = this.data.slice(0, 2);
+          this.list2 = this.data.slice(2, 3);
+          this.list3 = this.data.slice(3, 4);
+          // console.log(this.list1);
+        }
+      });
   }
 };
 </script>
