@@ -68,7 +68,7 @@ export default {
   created() {
     let type = this.$route.name.toLowerCase();
     this.$axios
-      .get("http://localhost:1904/discover", {
+      .get("/discover", {
         params: {
           type
         }

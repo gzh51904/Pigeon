@@ -96,7 +96,7 @@ export default {
 
             let { phoneNum: username, password, pass } = this.userFrom;
             this.$axios
-              .get("http://localhost:1904/reg/check", {
+              .get("/reg/check", {
                 params: {
                   username,
                   password

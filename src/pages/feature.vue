@@ -333,7 +333,7 @@ export default {
   created() {
     let type = this.$route.name;
     this.$axios
-      .get("http://localhost:1904/production", {
+      .get("/production", {
         params: {
           type
         }
@@ -371,7 +371,7 @@ export default {
       //组建复用时获取数据
       let type = this.$route.name;
       this.$axios
-        .get("http://localhost:1904/production", {
+        .get("/production", {
           params: {
             type
           }

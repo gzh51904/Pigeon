@@ -81,7 +81,7 @@ export default {
         if (regExp4Phone.test(this.userFrom.phoneNum)) {
           let { phoneNum: username, password } = this.userFrom;
           this.$axios
-            .get("http://localhost:1904/login", {
+            .get("/login", {
               params: {
                 username,
                 password

@@ -145,7 +145,7 @@ export default {
     console.log(this.$route.query);
 
     this.$axios
-      .get("http://localhost:1904/production", {
+      .get("/production", {
         params: {
           type
         }

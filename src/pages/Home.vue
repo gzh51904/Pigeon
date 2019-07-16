@@ -206,7 +206,7 @@ export default {
   },
   created() {
     if (this.$store.state.num) {
-      this.$axios.get("http://localhost:1904/production").then(res => {
+      this.$axios.get("/production").then(res => {
         let { data, headers } = res;
 
         let num = this.$store.state.num;
@@ -224,7 +224,7 @@ export default {
         console.log(this.yanxuanList);
       });
     } else {
-      this.$axios.get("http://localhost:1904/production").then(res => {
+      this.$axios.get("/production").then(res => {
         let { data, headers } = res;
 
         let num = (Math.random() * 5) | 0;

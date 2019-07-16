@@ -487,7 +487,7 @@ export default {
         let type = this.$route.name.toLowerCase();
         let limit = this.count;
         this.$axios
-          .get("http://localhost:1904/discover", {
+          .get("/discover", {
             params: {
               type
             }
@@ -519,7 +519,7 @@ export default {
   created() {
     let type = this.$route.name.toLowerCase();
     this.$axios
-      .get("http://localhost:1904/discover", {
+      .get("/discover", {
         params: {
           type
         }
@@ -553,7 +553,7 @@ export default {
       this.count = 4;
       let type = this.$route.name.toLowerCase();
       this.$axios
-        .get("http://localhost:1904/discover", {
+        .get("/discover", {
           params: {
             type
           }
