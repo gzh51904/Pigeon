@@ -6,7 +6,7 @@
           href
           :idex="item.id"
           :typeName="$route.name"
-          @click.prevent="goDetail($route.name,item.id)"
+          @click.prevent="goDetail(item.type,item.id)"
         >
           <div class="p-content-main-top">
             <div class="free-mark" v-if="item.welfare">
@@ -321,7 +321,10 @@ export default {
     goDetail(typeName, id) {
       let token = localStorage.getItem("Authorization");
       if (token) {
-        this.$router.push("/search");
+        this.$router.replace({
+          name: "Yanxuan",
+          params: { typeName, id }
+        });
       } else {
         this.$router.push("/login");
       }
@@ -346,6 +349,7 @@ export default {
             imgUrl
           });
         });
+        /* console.log(JSON.parse(JSON.stringify(this.dataShow)); */
       });
   },
   watch: {

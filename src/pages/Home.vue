@@ -14,7 +14,7 @@
     <main>
       <mt-swipe :auto="4000">
         <mt-swipe-item v-for="(item, index) in swipeList" :key="index">
-          <img :src="item.imgsrc" :alt="item.name" />
+          <img :src="item.imgsrc" :alt="item.name" style="width:100px;height:100px;" />
         </mt-swipe-item>
       </mt-swipe>
       <div class="item-list-wrapper">
@@ -239,7 +239,7 @@ export default {
     goto(id, type) {
       console.log(type);
 
-      this.$router.replace({
+      this.$router.push({
         name: "Yanxuan",
         params: { type, id }
       });
