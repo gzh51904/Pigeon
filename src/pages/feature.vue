@@ -318,12 +318,12 @@ export default {
     };
   },
   methods: {
-    goDetail(typeName, id) {
+    goDetail(type, id) {
       let token = localStorage.getItem("Authorization");
       if (token) {
-        this.$router.replace({
+        this.$router.push({
           name: "Yanxuan",
-          params: { typeName, id }
+          query: { type, id }
         });
       } else {
         this.$router.push("/login");
@@ -346,7 +346,8 @@ export default {
           let imgUrl = require("../assets/cc-img/" + item.imgUrl);
           return (item = {
             ...item,
-            imgUrl
+            imgUrl,
+            type
           });
         });
         /* console.log(JSON.parse(JSON.stringify(this.dataShow)); */
@@ -383,7 +384,8 @@ export default {
             let imgUrl = require("../assets/cc-img/" + item.imgUrl);
             return (item = {
               ...item,
-              imgUrl
+              imgUrl,
+              type
             });
           });
         });

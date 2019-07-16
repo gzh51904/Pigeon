@@ -3,10 +3,10 @@
     <!-- <div class="loading" v-if="isLoading"> -->
     <!-- </div> -->
     <div class="header">
-      <router-link class="search-btn" to="/search">
+      <a class="search-btn" @click.prevent="goSearch('Search')">
         <i class="el-icon-search"></i>
         <span>保险</span>
-      </router-link>
+      </a>
       <a href>
         <i class="el-icon-user"></i>
       </a>
@@ -14,7 +14,7 @@
     <main>
       <mt-swipe :auto="4000">
         <mt-swipe-item v-for="(item, index) in swipeList" :key="index">
-          <img :src="item.imgsrc" :alt="item.name" style="width:100px;height:100px;" />
+          <img :src="item.imgsrc" :alt="item.name" style="width:368px;height:200px;" />
         </mt-swipe-item>
       </mt-swipe>
       <div class="item-list-wrapper">
@@ -79,7 +79,7 @@
           v-for="item in yanxuanList"
           :key="item.id"
           :typeName="item.sym"
-          @click="goto(item.id,item.sym)"
+          @click.prevent.stop="goto(item.id,item.sym)"
         >
           <div>
             <h3>
@@ -182,23 +182,19 @@ export default {
       swipeList: [
         {
           name: "邻趣",
-          imgsrc:
-            "https://cdn.baigebao.com/upload/pc/20190702/5d1b30fb53898.png"
+          imgsrc: require("../assets/home/banner1.png")
         },
         {
           name: "飞常准",
-          imgsrc:
-            "https://cdn.baigebao.com/upload/pc/20190702/5d1b311ef2d2f.png"
+          imgsrc: require("../assets/home/banner2.png")
         },
         {
           name: "赚金币",
-          imgsrc:
-            "https://cdn.baigebao.com/upload/pc/20190710/5d255af8b699e.png"
+          imgsrc: require("../assets/home/banner3.png")
         },
         {
           name: "车轮",
-          imgsrc:
-            "https://cdn.baigebao.com/upload/pc/20190702/5d1b313b084e5.png"
+          imgsrc: require("../assets/home/banner4.png")
         }
       ]
       // isLoading: false,
@@ -209,39 +205,74 @@ export default {
     next();
   },
   created() {
-    this.$axios.get("http://localhost:1904/production").then(res => {
-      let { data, headers } = res;
+    if (this.$store.state.num) {
+      this.$axios.get("http://localhost:1904/production").then(res => {
+        let { data, headers } = res;
 
-      let num = (Math.random() * 7) | 0;
-      console.log(data.obj[num]);
+        let num = this.$store.state.num;
 
-      this.yanxuanList = data.obj[num].production.map(item => {
-        let imgUrl = require("../assets/cc-img/" + item.imgUrl);
-        let sym = data.obj[num].type;
-        return (item = {
-          ...item,
-          imgUrl,
-          sym
+        this.yanxuanList = data.obj[num].production.map(item => {
+          let imgUrl = require("../assets/cc-img/" + item.imgUrl);
+          let sym = data.obj[num].type;
+          return (item = {
+            ...item,
+            imgUrl,
+            sym
+          });
         });
-      });
-      console.log(this.yanxuanList);
 
-      /* this.dataShow = data.obj[0].production.map(item => {
+        console.log(this.yanxuanList);
+      });
+    } else {
+      this.$axios.get("http://localhost:1904/production").then(res => {
+        let { data, headers } = res;
+
+        let num = (Math.random() * 5) | 0;
+
+        this.$store.state.num = num;
+
+        this.yanxuanList = data.obj[num].production.map(item => {
+          let imgUrl = require("../assets/cc-img/" + item.imgUrl);
+          let sym = data.obj[num].type;
+          return (item = {
+            ...item,
+            imgUrl,
+            sym
+          });
+        });
+
+        console.log(this.yanxuanList);
+
+        /* this.dataShow = data.obj[0].production.map(item => {
           let imgUrl = require("../assets/cc-img/" + item.imgUrl);
           return (item = {
             ...item,
             imgUrl
           });
         }); */
-    });
+      });
+    }
   },
   methods: {
     goto(id, type) {
       console.log(type);
+      console.log(id);
 
-      this.$router.push({
+      /* this.$router.push({
         name: "Yanxuan",
         params: { type, id }
+      }); */
+      this.$router.push({
+        name: "Yanxuan",
+        query: { type, id }
+      });
+    },
+    goSearch(str) {
+      let name = str;
+      let pathFrom = this.$route.path;
+      this.$router.push({
+        name,
+        params: { pathFrom }
       });
     }
     // onRefresh() {//下拉刷新

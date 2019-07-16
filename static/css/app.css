@@ -19,6 +19,10 @@ html body main {
   /* padding-bottom: 40px; */
 }
 
+#home .mint-swipe-indicators {
+  margin-bottom: 30px;
+}
+
 #home .loading {
   background-size: 100%;
   background: url(../../src/assets/appimg/loading.gif) center center no-repeat;

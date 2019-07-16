@@ -2,7 +2,7 @@
   <div class="login-container">
     <div class="my-header">
       <a href="#">
-        <i class="lr-icon-back"></i>
+        <i @click="back()" class="lr-icon-back"></i>
       </a>
       <span class="header-name">密码登录</span>
     </div>
@@ -24,16 +24,16 @@
         </div>
         <div class="password-input-box input-box">
           <input
-            id="username"
+            id="password"
             class="input-default"
-            placeholder="请输入11位手机号"
+            placeholder="请输入密码"
             maxlength="11"
-            name="tel"
-            type="tel"
+            name="password"
+            type="password"
             v-model="userFrom.password"
           />
           <span id="eye-control">
-            <i class="eye-close"></i>
+            <i class="eye-close" ref="eye" @click="changeState()"></i>
           </span>
         </div>
       </div>
@@ -69,7 +69,8 @@ export default {
       },
       rules: {
         regExp4Phone
-      }
+      },
+      eyeState: false
     };
   },
   methods: {
@@ -117,6 +118,21 @@ export default {
         setTimeout(() => {
           mask.style.display = "none";
         }, 3000);
+      }
+    },
+    back() {
+      window.history.back();
+    },
+    changeState() {
+      let temp = document.getElementById("password");
+      if (!this.eyeState) {
+        this.$refs.eye.classList.remove("eye-open");
+        this.eyeState = true;
+        temp.setAttribute("type", "password");
+      } else {
+        this.$refs.eye.classList.add("eye-open");
+        temp.setAttribute("type", "text");
+        this.eyeState = false;
       }
     }
   }

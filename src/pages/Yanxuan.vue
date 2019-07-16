@@ -25,7 +25,7 @@
     </div>
 
     <van-tabs v-model="active" line-height="0" class="vantabs1">
-      <van-tab title="经典版 300元起">
+      <van-tab v-for="(item2,idx) of dataShow.version" :key="idx" title="经典版 300元起">
         <van-collapse v-model="activeNames">
           <van-collapse-item
             :title="dataShow.version.version1.baozhangone.cont"
@@ -94,7 +94,7 @@
         <span>{{dataShow.bottomPrice}}</span>
         <span>起</span>
       </span>
-      <van-goods-action-button type="danger" text="立即投保" />
+      <van-goods-action-button type="danger" text="立即投保" @click.native="buy()" />
     </van-goods-action>
   </div>
 </template>
@@ -123,14 +123,26 @@ export default {
     };
   },
   methods: {
-    onClickLeft() {},
+    onClickLeft() {
+      this.$router.replace("home");
+    },
     onClickRight() {},
     onClickIcon() {},
-    onClickButton() {}
+    onClickButton() {},
+    buy() {
+      let token = localStorage.getItem("Authorization");
+      if (token) {
+        this.$router.push({
+          name: "Myorder"
+        });
+      } else {
+        this.$router.push("/login");
+      }
+    }
   },
   created() {
-    let { type, id } = this.$route.params;
-    console.log(type, id);
+    let { type, id } = this.$route.query;
+    console.log(this.$route.query);
 
     this.$axios
       .get("http://localhost:1904/production", {
@@ -140,15 +152,14 @@ export default {
       })
       .then(res => {
         let { data, headers } = res;
-        console.log(id);
 
         this.dataShow = data.obj[0].production.map(item => {
           item = JSON.parse(JSON.stringify(item));
           let imgUrl = require("../assets/cc-img/" + item.imgUrl);
+          let sym = data.obj[0].type;
           let topimg = require("../assets/cc-img/" + item.topimg);
           let introductionImg = require("../assets/cc-img/" +
             item.introductionImg);
-          let sym = data.obj[0].type;
           return (item = {
             ...item,
             imgUrl,
@@ -156,8 +167,8 @@ export default {
             topimg,
             introductionImg
           });
-        })[id];
-        console.log(this.dataShow);
+        })[id - 1];
+        console.log("this.dataShow", this.dataShow.timelimit.company);
       });
   }
 };

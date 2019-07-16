@@ -17,8 +17,11 @@
         <div class="login-text">
           <div class="user-name" v-if="logined">
             <span id="nickName">{{ userName }}</span>
+            <div class="logout">
+              <a href @click.prevent="logout()">退出登录</a>
+            </div>
           </div>
-          <a v-else href="#" class="login" @click.prevent.stop="goto('login')">登陆/注册</a>
+          <a v-else href="#" class="login" @click.prevent.stop="goto('reg')">登陆/注册</a>
         </div>
       </div>
       <div class="domain">
@@ -154,10 +157,21 @@ export default {
   },
   methods: {
     link() {
-      this.$router.push("/Myorder");
+      let token = localStorage.getItem("Authorization");
+      if (token) {
+        this.$router.push({
+          name: "Myorder"
+        });
+      } else {
+        this.$router.push("/login");
+      }
     },
     goto(path) {
       this.$router.push(path);
+    },
+    logout() {
+      this.logined = false;
+      localStorage.removeItem("Authorization");
     }
   },
   created() {

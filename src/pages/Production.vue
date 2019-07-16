@@ -2,7 +2,7 @@
   <div class="product">
     <div class="p-head">
       <a href="javascript::void(0)">
-        <span class="el-icon-search" @click.prevent="goto('/search')"></span>
+        <span class="el-icon-search" @click.prevent="goto('Search')"></span>
       </a>
       <span class="head-name">保险产品</span>
       <span class>筛选</span>
@@ -105,7 +105,15 @@ export default {
       this.$store.state.production = name;
     },
     goto(path) {
-      this.$router.push(path);
+      let nameFrom = this.$route.name;
+      let pathFrom = this.$route.path;
+      this.$router.push({
+        name: path,
+        params: {
+          pathFrom,
+          nameFrom
+        }
+      });
     }
   },
   updated() {

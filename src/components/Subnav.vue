@@ -10,8 +10,8 @@
       :to="{path:item.path}"
       @click.native="change(item.title)"
     >
-      <i v-if="activeRouter == item.name" class="nav-icon" :class="activeRouter"></i>
-      <i v-else class="nav-icon" :class="item.title"></i>
+      <i class="nav-icon" :class="item.title"></i>
+      <!--       <i v-else class="nav-icon" :class="item.title"></i> -->
       <span class="text">{{item.cnName}}</span>
     </router-link>
     <!-- <el-col :span="20">
@@ -40,7 +40,7 @@ Vue.use(Col);
 export default {
   data() {
     return {
-      activeRouter: "Home",
+      activeRouter: "/home",
       nav: [
         {
           name: "Home",
@@ -76,7 +76,13 @@ export default {
     }
   },
   created() {
+    this.activeRouter = this.$route.matched[0].path;
+    console.log(this.activeRouter);
     this.activeRouter = window.location.hash.slice(2).split("/")[0];
+  },
+  mounted() {
+    console.log("///", this.activeRouter);
+    console.log("+++", this.nav[3].path);
   },
   watch: {
     $route() {}
@@ -90,7 +96,7 @@ export default {
   background-color: #fff;
   width: 100%;
   bottom: 0;
-  height: 98px;
+  height: 99px;
   box-shadow: 0 0 6px #e9e8ec;
   display: flex;
   justify-content: space-around;
@@ -128,10 +134,26 @@ export default {
       font-size: 26px;
       color: #333;
     }
-    .active-router {
-      span {
-        color: #4d72e2;
-      }
+  }
+  .router-link-exact-active {
+    .nav-icon.mine {
+      background: url(../assets/mine/new-mine2.png) no-repeat;
+      background-size: 100% 100%;
+    }
+    .nav-icon.home {
+      background: url(../assets/mine/new-home2.png) no-repeat;
+      background-size: 100% 100%;
+    }
+    .nav-icon.production {
+      background: url(../assets/mine/new-product2.png) no-repeat;
+      background-size: 100% 100%;
+    }
+    .nav-icon.discover {
+      background: url(../assets/mine/new-find2.png) no-repeat;
+      background-size: 100% 100%;
+    }
+    span {
+      color: #4d72e2;
     }
   }
 }
