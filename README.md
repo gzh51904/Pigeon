@@ -5,9 +5,9 @@
 ```
 项目官网 ： http://newm.baigebao.com/
 
-WebApp上线地址 ： http:39.108.187.102:1904
+WebApp上线地址 ： http://47.107.156.131:1904
 
-后台管理系统地址 ： http:39.108.187.102:1905
+后台管理系统地址 ： http://47.107.156.131:1905
 
 github地址：https://github.com/gzh51904/Pigeon.git
 ```
