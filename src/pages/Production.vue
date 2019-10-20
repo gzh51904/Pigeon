@@ -1,11 +1,148 @@
 <template>
-  <div>产品</div>
+  <div class="product">
+    <div class="p-head">
+      <a href="javascript::void(0)">
+        <span class="el-icon-search" @click.prevent="goto('Search')"></span>
+      </a>
+      <span class="head-name">保险产品</span>
+      <span class>筛选</span>
+    </div>
+    <div class="p-tab">
+      <li v-for="item in pages" :key="item.name">
+        <router-link :to="item.path">
+          <div v-bind:class="{active:activeName===item.name}" @click="changeTab(item.name)">
+            <!-- <div @click="changeTab(idx)"> -->
+            <span>{{item.title}}</span>
+          </div>
+        </router-link>
+      </li>
+      <!-- <li><div><span>健康险</span></div></li>
+        <li><div><span>旅行险</span></div></li>
+        <li><div><span>意外险</span></div></li>
+        <li><div><span>财产险</span></div></li>
+        <li><div><span>责任险</span></div></li>
+      <li><div><span>寿险</span></div></li>-->
+    </div>
+    <div class="main">
+      <router-view></router-view>
+    </div>
+    <slot></slot>
+  </div>
 </template>
 <script>
-export default {};
+import Vue from "vue";
+import { Tabs, TabPane, RadioGroup, RadioButton } from "element-ui";
+import "../../node_modules/element-ui/lib/theme-chalk/icon.css";
+import "../../static/scss/production.scss";
+import { log } from "util";
+Vue.use(Tabs);
+Vue.use(TabPane);
+export default {
+  name: "product",
+  data() {
+    return {
+      // type: "feature",
+      pages: [
+        {
+          title: "特色",
+          path: "/production/feature",
+          name: "feature"
+        },
+        {
+          title: "健康险",
+          path: "/production/health",
+          name: "health"
+        },
+        {
+          title: "旅行险",
+          path: "/production/travel",
+          name: "travel"
+        },
+        {
+          title: "意外险",
+          path: "/production/accident",
+          name: "accident"
+        },
+        {
+          title: "财产险",
+          path: "/production/wealth",
+          name: "wealth"
+        },
+        {
+          title: "责任险",
+          path: "/production/duty",
+          name: "duty"
+        },
+        {
+          title: "寿险",
+          path: "/production/lifetime",
+          name: "lifetime"
+        }
+      ],
+      activeName: "feature"
+    };
+  },
+  created() {
+    console.log("====", this.$route.name);
+
+    if (this.$store.state.production) {
+      this.activeName = this.$store.state.production;
+      console.log("this.activeName", this.activeName);
+      return;
+    } else {
+      if (this.$route.name != "feature") {
+        this.activeName = "feature";
+        this.$router.replace("/production/feature");
+      }
+    }
+  },
+  methods: {
+    changeTab(name) {
+      this.activeName = name;
+      //保存页面tabbar状态
+      console.log("----", name);
+
+      this.$store.state.production = name;
+    },
+    goto(path) {
+      let nameFrom = this.$route.name;
+      let pathFrom = this.$route.path;
+      this.$router.push({
+        name: path,
+        params: {
+          pathFrom,
+          nameFrom
+        }
+      });
+    }
+  },
+  updated() {
+    // if(this.$store.state.subState=="production"){
+    //   this.activeIdx =0
+    // }
+    // if(this.$store.state.subState==''){
+    //   this.activeIdx = idx
+    // }
+  }
+  // created() {
+  //   this.$store.state.pType = "feature";
+  // },
+  // created(){
+  //   this.$router.push('/production/feature')
+  // },
+  // beforeRouteUpdate(to, from, next) {
+  //   // console.log(to.name, from.name);
+  //   this.type = to.name;
+  //   //this.$store.state.pType = to.name;
+  //   next();
+  // }
+  // beforeRouteUpdate(to,from,next){
+  //   this.type = to.name;
+  //   next()
+  // }
+};
 </script>
 
-<style>
+<style lang="scss" scpoed>
 </style>
-
 

@@ -1,0 +1,156 @@
+html,body{
+    height: 100%;
+    
+}
+#app{
+    height: 100%;
+}
+#box{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+}
+ 
+.head{
+        background:#fff;
+        width: 100%;
+    }
+    .icon{
+        font-size: 22px;
+    }
+
+.search{
+    width: 690px;
+    height: 92px;
+    margin: 0 auto;
+    padding-top: 12px;
+    position: relative;
+    
+    .el-input__inner{
+        width: 690px;
+        height: 62px;
+        background: #F0F0F0;
+        border-radius: 36px;
+        padding-left: 65px;
+        font-size: 30px;
+        color:#BFBFBF;
+   
+
+    }
+    .el-icon-search{
+        position: absolute;
+        left: 26px;
+        top: 4.13333vw;
+        font-size: 30px;
+        color:#BFBFBF;
+        z-index: 99;
+    }
+    .el-input__clear{
+        position: absolute;
+        right: 26px;
+    }
+}
+
+.nav{
+    width: 100%;
+    height: 110px;
+    overflow-x: scroll;
+    .el-menu--horizontal{
+        width: 800px;
+        .el-menu-item{
+            width: 160px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            font-size: 34px;
+        }
+    }
+}
+.nav::-webkit-scrollbar {
+    display: none;
+}
+
+.recommend,.basis,.insurance,.claims{
+    flex: 1;
+    overflow-y: auto;
+
+      
+    .item-one{
+        width: 99.66667vw;
+        background:#F7F7F7;
+        padding-bottom: 20px;
+        a{
+            display: block;
+            background: #fff;
+            width: 99.66667vw;
+            padding-left: 42px;
+        }
+
+    h2{
+        font-size: 36px;
+        color:#343434;
+        padding: 30px 0;
+    }
+    p{
+        font-size: 26px;
+        color:#979CAF;
+       margin-bottom: 20px;
+    }
+    .img{
+        img{
+            width: 220px;
+            height: 160px;
+            margin-right: 15px;
+        }
+        }
+    .icon{
+        padding: 28px 0;
+        color:#9DABC1;
+        span{
+            margin-right: 16px;
+            i{
+                margin-right: 8px;
+            }
+        }
+       
+    }
+    }
+  
+    .item-three{
+        background:#F7F7F7;
+        margin: 0 auto;
+ 
+    a{
+        display: block;
+        background: #fff;
+        padding:0 0 34px 30px;
+        div{
+           height:104px;
+           line-height: 104px;
+    
+        h2{
+            font-size: 32px;
+            color:#343434;
+        }
+        span{
+            color:#ABAFB9;
+            font-size: 32px;
+            i{
+                margin-right: 24px;
+                color:#DADADA;
+                
+            }
+        }
+    }
+      img{
+                width: 690px;
+                height: 216px;
+                margin-right: 15px;
+            }
+        }
+    }
+    .item-four{
+        padding-bottom: 0px;
+        padding-top: 20px;
+    }
+}
